@@ -1,38 +1,35 @@
 import { useState } from "react";
- 
+
 const GOLD = "#C9A84C";
 const DARK = "#2D2152";
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Jost', sans-serif";
- 
+
 const navLinks = [
-  { label: "OUR STORY", id: "hero", active: true },
+  { label: "OUR STORY", id: "hero" },
   { label: "GALLERY", id: "gallery" },
   { label: "SERVICES", id: "services" },
   { label: "WORKSHOPS", id: "workshops" },
   { label: "CONTACT", id: "contact" },
 ];
- 
+
 const CartIcon = () => (
   <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-    <line x1="3" y1="6" x2="21" y2="6" strokeLinecap="round" />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M16 10a4 4 0 01-8 0" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
   </svg>
 );
- 
+
 export default function Navbar() {
   const [activeLink, setActiveLink] = useState("OUR STORY");
- 
+
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
- 
+
   return (
     <>
-      {/* Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap');
       `}</style>
- 
+
       <nav
         style={{
           position: "fixed",
@@ -50,35 +47,32 @@ export default function Navbar() {
         <div
           style={{
             width: "100%",
-            maxWidth: "1320px",
-            margin: "0 auto",
-            padding: "0 40px",
-            display: "grid",
-            gridTemplateColumns: "1fr auto 1fr",
+            padding: "0 48px",
+            display: "flex",
             alignItems: "center",
+            justifyContent: "space-between",
+            boxSizing: "border-box",
           }}
         >
-          {/* Logo — left */}
-          <div>
-            <button
-              onClick={() => scrollTo("hero")}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-                fontFamily: SERIF,
-                fontSize: "22px",
-                fontWeight: 600,
-                fontStyle: "italic",
-                color: GOLD,
-                letterSpacing: "0.01em",
-              }}
-            >
-              Chithu Vibes
-            </button>
-          </div>
- 
+          {/* Logo — far left */}
+          <button
+            onClick={() => scrollTo("hero")}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 0,
+              fontFamily: SERIF,
+              fontSize: "22px",
+              fontWeight: 600,
+              fontStyle: "italic",
+              color: GOLD,
+              letterSpacing: "0.01em",
+            }}
+          >
+            Chithu Vibes
+          </button>
+
           {/* Nav Links — center */}
           <ul
             style={{
@@ -88,6 +82,9 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               gap: "40px",
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
             }}
           >
             {navLinks.map(({ label, id }) => {
@@ -111,7 +108,6 @@ export default function Navbar() {
                     }}
                   >
                     {label}
-                    {/* Active underline */}
                     {isActive && (
                       <span
                         style={{
@@ -130,23 +126,21 @@ export default function Navbar() {
               );
             })}
           </ul>
- 
-          {/* Cart Icon — right */}
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <button
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                color: DARK,
-                display: "flex",
-                alignItems: "center",
-                padding: 0,
-              }}
-            >
-              <CartIcon />
-            </button>
-          </div>
+
+          {/* Cart — far right */}
+          <button
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: DARK,
+              display: "flex",
+              alignItems: "center",
+              padding: 0,
+            }}
+          >
+            <CartIcon />
+          </button>
         </div>
       </nav>
     </>

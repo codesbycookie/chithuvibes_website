@@ -78,7 +78,7 @@ export default function AuthenticitySection() {
             <div key={s.label}>
               <p
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: "'', serif",
                   fontSize: "48px",
                   fontWeight: 500,
                   color: "#C9A84C",
