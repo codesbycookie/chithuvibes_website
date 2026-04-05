@@ -39,23 +39,23 @@ export default function BespokeSection() {
  
         {/* WhatsApp button */}
         <button
-          style={{
-            backgroundColor: "#C9A84C",
-            color: "#3D3566",
-            fontFamily: "'Jost', sans-serif",
-            fontSize: "12px",
-            fontWeight: 700,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            padding: "18px 48px",
-            border: "none",
-            cursor: "pointer",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "12px",
-            boxShadow: "0 6px 24px rgba(201,168,76,0.3)",
-          }}
-        >
+  style={{
+    background: "linear-gradient(to right, #f5e6a5, #e3c15b, #d4af37)",
+    color: "#3D3566",
+    fontFamily: "'Jost', sans-serif",
+    fontSize: "12px",
+    fontWeight: 700,
+    letterSpacing: "0.18em",
+    textTransform: "uppercase",
+    padding: "18px 48px",
+    border: "none",
+    cursor: "pointer",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "12px",
+    boxShadow: "0 6px 24px rgba(201,168,76,0.3)",
+  }}
+>
           {/* Chat bubble icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
