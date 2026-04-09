@@ -1,31 +1,14 @@
-// FounderSection.jsx
 export default function FounderSection() {
   return (
     <section
-      style={{
-        backgroundColor: "#EDEAF2",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        minHeight: "520px",
-      }}
+      className="grid grid-cols-1 md:grid-cols-2 min-h-[520px]"
+      style={{ backgroundColor: "#EDEAF2" }}
     >
-      {/* ── LEFT — image placeholder ── */}
-      <div
-        style={{
-          padding: "40px 40px 40px 60px",
-          display: "flex",
-          alignItems: "stretch",
-        }}
-      >
+      {/* LEFT — image placeholder */}
+      <div className="flex items-stretch px-6 py-8 md:pl-[60px] md:pr-[40px] md:py-[40px]">
         <div
-          style={{
-            backgroundColor: "#D5D5D5",
-            borderRadius: "8px",
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          className="rounded-lg w-full flex items-center justify-center min-h-[280px] md:min-h-0"
+          style={{ backgroundColor: "#D5D5D5" }}
         >
           <svg
             width="90"
@@ -43,83 +26,62 @@ export default function FounderSection() {
           </svg>
         </div>
       </div>
- 
-      {/* ── RIGHT — content ── */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          padding: "80px 72px 80px 48px",
-          boxSizing: "border-box",
-        }}
-      >
-        <div>
+
+      {/* RIGHT — content */}
+      <div className="flex items-center box-border px-6 py-12 md:pl-[48px] md:pr-[72px] md:py-[80px]">
+        <div className="w-full">
+
           {/* Gold line */}
           <div
-            style={{
-              width: "56px",
-              height: "3px",
-              backgroundColor: "#C9A84C",
-              marginBottom: "28px",
-            }}
+            className="w-14 h-[3px] mb-7"
+            style={{ backgroundColor: "#C9A84C" }}
           />
- 
+
           {/* Heading */}
           <h2
+            className="font-normal leading-[1.2] mb-7 text-[36px] md:text-[52px]"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "52px",
-              fontWeight: 400,
               color: "#3D3566",
-              marginBottom: "28px",
-              lineHeight: 1.2,
             }}
           >
             A Note from the Founder
           </h2>
- 
+
           {/* Quote */}
           <p
+            className="italic leading-[1.75] mb-8 text-[18px] md:text-[22px] w-full"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "22px",
-              fontStyle: "italic",
               color: "#3D3566",
-              lineHeight: 1.75,
-              marginBottom: "32px",
               maxWidth: "520px",
             }}
           >
             "In every stroke of Tamil script, there is a rhythm. My goal was to capture that rhythm and make it permanent. Each piece we create is more than decor—it's a piece of our shared identity."
           </p>
- 
+
           {/* Name */}
           <p
+            className="text-[12px] font-bold tracking-[0.18em] uppercase mb-1.5"
             style={{
               fontFamily: "'Jost', sans-serif",
-              fontSize: "12px",
-              fontWeight: 700,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
               color: "#C9A84C",
-              marginBottom: "6px",
             }}
           >
             Chithu Vibes
           </p>
- 
+
           {/* Title */}
           <p
+            className="text-[11px] tracking-[0.15em] uppercase"
             style={{
               fontFamily: "'Jost', sans-serif",
-              fontSize: "11px",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
               color: "#999999",
             }}
           >
             Master Calligrapher &amp; Founder
           </p>
+
         </div>
       </div>
     </section>

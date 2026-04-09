@@ -1,29 +1,11 @@
-// AuthenticitySection.jsx
 export default function AuthenticitySection() {
   return (
-    <section
-      style={{
-        backgroundColor: "#ffffff",
-        padding: "100px 72px",
-        boxSizing: "border-box",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "860px",
-          margin: "0 auto",
-          textAlign: "center",
-        }}
-      >
+    <section className="bg-white box-border px-6 py-16 md:px-[72px] md:py-[100px]">
+      <div className="mx-auto text-center" style={{ maxWidth: "860px" }}>
+
         {/* Gold compass icon */}
-        <div style={{ marginBottom: "32px", display: "flex", justifyContent: "center" }}>
-          <svg
-            width="36"
-            height="44"
-            viewBox="0 0 36 44"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <div className="flex justify-center mb-8">
+          <svg width="36" height="44" viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line x1="18" y1="4" x2="6" y2="38" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" />
             <line x1="18" y1="4" x2="30" y2="38" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" />
             <line x1="10" y1="22" x2="26" y2="22" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" />
@@ -33,14 +15,10 @@ export default function AuthenticitySection() {
 
         {/* Heading */}
         <h2
+          className="italic font-normal leading-[1.2] mb-9 text-[36px] md:text-[52px]"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "52px",
-            fontStyle: "italic",
-            fontWeight: 400,
             color: "#3D3566",
-            marginBottom: "36px",
-            lineHeight: 1.2,
           }}
         >
           The Edge of Authenticity
@@ -48,13 +26,11 @@ export default function AuthenticitySection() {
 
         {/* Description */}
         <p
+          className="text-[15px] md:text-[16px] leading-[1.85] mx-auto mb-12 md:mb-16 w-full"
           style={{
             fontFamily: "'Jost', sans-serif",
-            fontSize: "16px",
             color: "#555555",
-            lineHeight: 1.85,
             maxWidth: "700px",
-            margin: "0 auto 64px",
           }}
         >
           Unlike generic fonts, our designs are based on hand-drawn calligraphy by Tamil masters. We then vectorize these unique strokes to maintain the "human touch" even after the laser has done its work.
@@ -62,38 +38,28 @@ export default function AuthenticitySection() {
 
         {/* Stats */}
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: "32px",
-            maxWidth: "600px",
-            margin: "0 auto",
-          }}
+          className="grid grid-cols-3 gap-6 md:gap-8 mx-auto"
+          style={{ maxWidth: "600px" }}
         >
           {[
-            { value: "100%", label: "Original Script" },
-            { value: "0.01mm", label: "Laser Accuracy" },
-            { value: "Global", label: "Shipping" },
+            { value: "100%",   label: "Original Script" },
+            { value: "0.01mm", label: "Laser Accuracy"  },
+            { value: "Global", label: "Shipping"         },
           ].map((s) => (
             <div key={s.label}>
               <p
+                className="font-medium leading-none mb-2 text-[32px] md:text-[48px]"
                 style={{
-                  fontFamily: "'', serif",
-                  fontSize: "48px",
-                  fontWeight: 500,
+                  fontFamily: " serif",
                   color: "#C9A84C",
-                  marginBottom: "8px",
-                  lineHeight: 1,
                 }}
               >
                 {s.value}
               </p>
               <p
+                className="text-[10px] md:text-[11px] tracking-[0.22em] uppercase"
                 style={{
                   fontFamily: "'Jost', sans-serif",
-                  fontSize: "11px",
-                  letterSpacing: "0.22em",
-                  textTransform: "uppercase",
                   color: "#999999",
                 }}
               >
@@ -102,6 +68,7 @@ export default function AuthenticitySection() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

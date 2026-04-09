@@ -1,22 +1,13 @@
-// HeritageSection.jsx
 export default function HeritageSection() {
   return (
     <section
-      style={{
-        backgroundColor: "#DCDCDC",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        minHeight: "520px",
-      }}
+      className="grid grid-cols-1 md:grid-cols-2 min-h-[520px]"
+      style={{ backgroundColor: "#DCDCDC" }}
     >
-      {/* ── LEFT — image placeholder ── */}
+      {/* LEFT — image placeholder */}
       <div
-        style={{
-          backgroundColor: "#CCCCCC",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        className="flex items-center justify-center min-h-[300px] md:min-h-[520px]"
+        style={{ backgroundColor: "#CCCCCC" }}
       >
         <svg
           width="100"
@@ -33,101 +24,72 @@ export default function HeritageSection() {
           <polyline points="21 15 16 10 5 21" />
         </svg>
       </div>
- 
-      {/* ── RIGHT — content ── */}
+
+      {/* RIGHT — content */}
       <div
-        style={{
-          backgroundColor: "#EDEAF2",
-          display: "flex",
-          alignItems: "center",
-          padding: "80px 72px",
-          boxSizing: "border-box",
-        }}
+        className="flex items-center box-border px-6 py-12 md:px-[72px] md:py-[80px]"
+        style={{ backgroundColor: "#EDEAF2" }}
       >
-        <div>
+        <div className="w-full">
+
           {/* Badge */}
           <div
-            style={{
-              display: "inline-block",
-              backgroundColor: "#3D3566",
-              padding: "6px 14px",
-              marginBottom: "28px",
-            }}
+            className="inline-block mb-7 px-[14px] py-[6px]"
+            style={{ backgroundColor: "#3D3566" }}
           >
             <span
-              style={{
-                fontFamily: "'Jost', sans-serif",
-                fontSize: "11px",
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "#ffffff",
-              }}
+              className="text-[11px] tracking-[0.22em] uppercase text-white"
+              style={{ fontFamily: "'Jost', sans-serif" }}
             >
               The Heritage
             </span>
           </div>
- 
+
           {/* Heading */}
           <h2
+            className="italic font-normal leading-[1.15] mb-10 text-[40px] md:text-[64px]"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "64px",
-              fontStyle: "italic",
-              fontWeight: 400,
               color: "#3D3566",
-              lineHeight: 1.15,
-              marginBottom: "40px",
             }}
           >
             Evolving the<br />Eternal Script
           </h2>
- 
+
           {/* Para 1 */}
           <p
+            className="text-[14px] md:text-[15px] leading-[1.85] mb-7 w-full md:max-w-[480px]"
             style={{
               fontFamily: "'Jost', sans-serif",
-              fontSize: "15px",
               color: "#444444",
-              lineHeight: 1.85,
-              marginBottom: "28px",
-              maxWidth: "480px",
             }}
           >
             Chithu Vibes was born from a singular vision: to ensure that the exquisite flow of Tamil calligraphy survives the digital age by carving it into the physical world.
           </p>
- 
+
           {/* Para 2 */}
           <p
+            className="text-[14px] md:text-[15px] leading-[1.85] mb-12 w-full md:max-w-[480px]"
             style={{
               fontFamily: "'Jost', sans-serif",
-              fontSize: "15px",
               color: "#444444",
-              lineHeight: 1.85,
-              marginBottom: "48px",
-              maxWidth: "480px",
             }}
           >
             Our process combines the meditative patience of a traditional scribe with the uncompromising power of industrial lasers. Every piece is a dialogue between the old and the new.
           </p>
- 
-          {/* Link */}
+
+          {/* Link Button */}
           <button
+            className="bg-transparent border-none text-[12px] font-bold tracking-[0.18em] uppercase pb-1 cursor-pointer"
             style={{
-              background: "none",
-              border: "none",
               borderBottom: "2px solid #C9A84C",
               color: "#C9A84C",
               fontFamily: "'Jost', sans-serif",
-              fontSize: "12px",
-              fontWeight: 700,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              paddingBottom: "4px",
-              cursor: "pointer",
             }}
           >
             Learn Our Process
           </button>
+
         </div>
       </div>
     </section>
