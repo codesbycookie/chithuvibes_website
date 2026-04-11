@@ -42,14 +42,14 @@ export default function Footer() {
       style={{ backgroundColor: "#EDEAEA" }}
     >
 
-      {/* MAIN GOLD CARD */}
+      
       <div className="bg-cv-gold rounded-cv-xl mb-cv-lg">
         <div
           className="flex flex-col gap-cv-3xl px-cv-xl py-cv-3xl md:grid md:gap-cv-3xl md:items-start md:px-cv-4xl md:py-cv-3xl"
           style={{ gridTemplateColumns: "1fr auto" }}
         >
 
-          {/* Left — headline + tagline */}
+          
           <div className="w-full md:max-w-[460px]">
             <h2
               className="font-cv-serif font-cv-regular leading-cv-snug mb-cv-lg text-white"
@@ -65,10 +65,10 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Right — nav + social */}
+          
           <div className="flex flex-col gap-cv-xl md:items-end md:gap-cv-3xl">
 
-            {/* Nav columns */}
+            
             <div className="flex gap-cv-3xl md:gap-cv-4xl">
               {[col1, col2].map((col, ci) => (
                 <ul key={ci} className="list-none p-0 m-0 flex flex-col gap-cv-md md:gap-cv-lg">
@@ -86,7 +86,7 @@ export default function Footer() {
               ))}
             </div>
 
-            {/* Social icons */}
+           
             <div className="flex items-center gap-cv-md md:gap-cv-lg">
               {socials.map((s, i) => (
                 <a
@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* BOTTOM BAR */}
+      
       <div className="flex flex-col gap-cv-sm px-cv-pxsm pt-cv-pxsm sm:flex-row sm:items-center sm:justify-between sm:gap-0">
 
         <p className="m-0 font-cv-sans text-cv-xs text-cv-gold">

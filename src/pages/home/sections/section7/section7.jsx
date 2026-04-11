@@ -6,7 +6,7 @@ export default function BespokeSection() {
     >
       <div className="mx-auto" style={{ maxWidth: "800px" }}>
 
-        {/* Heading */}
+        
         <h2
           className="font-cv-regular leading-cv-tight mb-cv-lg font-cv-serif text-cv-purple"
           style={{ fontSize: "clamp(36px, 5vw, 72px)" }}
@@ -14,12 +14,11 @@ export default function BespokeSection() {
           Begin Your Bespoke Journey
         </h2>
 
-        {/* Sub */}
+        
         <p className="text-cv-sm leading-cv-relaxed mb-cv-3xl font-cv-sans text-cv-muted">
           Custom requests, bulk orders, or personal engravings. We are just a message away.
         </p>
 
-        {/* WhatsApp Button */}
         <button
           className="border-none cursor-pointer inline-flex items-center gap-cv-lg text-cv-xs font-cv-bold tracking-cv-wider uppercase px-cv-2xl py-cv-md font-cv-sans text-cv-purple"
           style={{

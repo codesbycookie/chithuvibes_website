@@ -53,7 +53,7 @@ export default function OrderSection() {
     <section className="bg-white box-border px-cv-lg py-cv-3xl md:px-cv-4xl md:py-cv-5xl">
       <div className="w-full mx-auto" style={{ maxWidth: "1200px" }}>
 
-        {/* Heading */}
+
         <h2
           className="font-cv-regular text-center leading-cv-tight mb-cv-md font-cv-serif text-cv-purple"
           style={{ fontSize: "clamp(32px, 4vw, 56px)" }}
@@ -61,12 +61,12 @@ export default function OrderSection() {
           Order directly with us
         </h2>
 
-        {/* Sub heading */}
+        
         <p className="text-cv-sm text-center mb-cv-3xl md:mb-cv-3xl font-cv-sans text-cv-muted">
           Discuss your vision and place your order through WhatsApp.
         </p>
 
-        {/* Testimonials */}
+       
         <div
           className="grid grid-cols-1 md:grid-cols-2 gap-cv-3xl md:gap-cv-3xl mb-cv-3xl"
           style={{ opacity: visible ? 1 : 0, transition: `opacity var(--duration-cv-slow) ease` }}
@@ -83,7 +83,7 @@ export default function OrderSection() {
                 "{t.quote}"
               </p>
 
-              {/* Avatar */}
+              
               <div
                 className="w-14 h-14 rounded-cv-full flex items-center justify-center mx-auto mb-cv-md"
                 style={{ backgroundColor: "#CCCCCC" }}
@@ -95,12 +95,12 @@ export default function OrderSection() {
                 </svg>
               </div>
 
-              {/* Name */}
+           
               <p className="text-cv-xs font-cv-semibold tracking-cv-normal mb-cv-xs font-cv-sans text-cv-purple">
                 {t.name}
               </p>
 
-              {/* Title */}
+              
               <p className="text-cv-xs font-cv-sans text-cv-muted">
                 {t.title}
               </p>
@@ -108,7 +108,7 @@ export default function OrderSection() {
           ))}
         </div>
 
-        {/* Dots */}
+        
         <div className="flex justify-center gap-cv-sm">
           {testimonials.map((_, i) => (
             <button

@@ -77,10 +77,10 @@ export default function FounderSection() {
     <div className="w-full flex flex-col items-center bg-white px-cv-lg py-cv-3xl md:px-cv-4xl md:py-cv-5xl box-border font-cv-sans">
       <div className="w-full max-w-[1100px]">
 
-        {/* Top grid: portrait + text */}
+        
         <div className="grid grid-cols-1 md:grid-cols-[380px_1fr] gap-cv-3xl md:gap-cv-4xl items-start mb-cv-3xl md:mb-cv-4xl">
 
-          {/* Portrait column */}
+          
           <div className="flex justify-center">
             <div className="relative inline-block">
               <div
@@ -90,7 +90,7 @@ export default function FounderSection() {
                 <FounderIllustration />
               </div>
 
-              {/* Spark badge */}
+             
               <div
                 className="absolute flex items-center justify-center rounded-cv-xl text-white"
                 style={{
@@ -108,15 +108,15 @@ export default function FounderSection() {
             </div>
           </div>
 
-          {/* Text column */}
+          
           <div className="pt-cv-pxsm mt-cv-lg md:mt-0">
 
-            {/* Eyebrow */}
+           
             <p className="uppercase font-cv-semibold tracking-cv-wider mb-cv-lg text-cv-label md:text-cv-label text-cv-gold">
               The Founder
             </p>
 
-            {/* Heading */}
+           
             <h2
               className="font-cv-regular leading-[1.08] mb-0 font-cv-serif text-cv-plum"
               style={{ fontSize: "clamp(52px, 8vw, 72px)" }}
@@ -124,7 +124,6 @@ export default function FounderSection() {
               The Gold<br />Medalist.
             </h2>
 
-            {/* Sub heading */}
             <h3
               className="italic font-cv-regular leading-cv-snug mb-cv-lg font-cv-serif text-cv-gold"
               style={{ fontSize: "clamp(40px, 6.5vw, 58px)" }}
@@ -132,14 +131,14 @@ export default function FounderSection() {
               The Scholar. The<br />Phoenix.
             </h3>
 
-            {/* Name */}
+            
             <span
               className="underline underline-offset-[4px] cursor-pointer block mb-cv-xl font-cv-regular font-cv-serif text-cv-lg text-cv-gold"
             >
               Jeya Chitra
             </span>
 
-            {/* Bio paragraphs */}
+            
             <div>
               {bioParas.map((para, i) => (
                 <p
@@ -154,7 +153,7 @@ export default function FounderSection() {
           </div>
         </div>
 
-        {/* Credential cards */}
+        
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-cv-md md:gap-cv-lg">
           {cards.map(({ icon, label, desc }, i) => (
             <div

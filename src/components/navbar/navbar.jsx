@@ -3,9 +3,8 @@ import { useState } from "react";
 
 const navLinks = [
   { label: "OUR STORY",  path: "/about" },
-  { label: "GALLERY",    path: "/gallery" },
-  { label: "SERVICES",   path: "/services" },
-  { label: "WORKSHOPS",  path: "/workshops" },
+  { label: "CALLIGRAPHY PRODUCTS",    path: "/calligraphy-products" },
+  { label: "GIFT PRODUCTS",   path: "/gift-products" },
   { label: "CONTACT",    path: "/contact" },
 ];
 
@@ -40,10 +39,10 @@ export default function Navbar() {
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap');
       `}</style>
 
-      <nav className="fixed top-0 left-0 right-0 z-cv-top bg-white border-b border-cv-border h-16">
+      <nav className="fixed top-0 left-0 right-0 z-[1000] bg-white border-b border-cv-border h-16">
         <div className="w-full h-full px-cv-lg md:px-cv-3xl flex items-center justify-between box-border">
 
-          {/* Logo */}
+          
           <button
             onClick={() => navigate("/")}
             className="bg-transparent border-none cursor-pointer p-0 font-cv-serif text-cv-gold italic font-cv-semibold"
@@ -52,7 +51,7 @@ export default function Navbar() {
             Chithu Vibes
           </button>
 
-          {/* Desktop Nav Links */}
+
           <ul
             className="hidden md:flex list-none m-0 p-0 items-center gap-cv-3xl absolute left-1/2"
             style={{ transform: "translateX(-50%)" }}
@@ -80,7 +79,7 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* Right: Cart + Hamburger */}
+          
           <div className="flex items-center gap-cv-md">
             <button className="bg-transparent border-none cursor-pointer flex items-center p-0 text-cv-purple">
               <CartIcon />
@@ -96,7 +95,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Dropdown */}
+        
         {menuOpen && (
           <div className="md:hidden bg-white border-t border-cv-border px-cv-lg py-cv-md flex flex-col gap-cv-md">
             {navLinks.map(({ label, path }) => {

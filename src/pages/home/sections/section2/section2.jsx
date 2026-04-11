@@ -12,7 +12,7 @@ export default function Section2() {
     >
       <div className="w-full mx-auto" style={{ maxWidth: "1200px" }}>
 
-        {/* Header */}
+        
         <div className="flex items-start justify-between mb-cv-3xl">
           <h2
             className="m-0 leading-cv-tight italic font-cv-regular font-cv-serif text-cv-purple"
@@ -25,7 +25,7 @@ export default function Section2() {
           </p>
         </div>
 
-        {/* Cards Grid */}
+       
         <div
           className="grid grid-cols-1 md:grid-cols-3 rounded-cv-md overflow-hidden border border-cv-border"
           style={{ gap: "0px" }}
@@ -38,7 +38,7 @@ export default function Section2() {
                 borderRight: index < 2 ? "1px solid var(--color-cv-border)" : "none",
               }}
             >
-              {/* Image placeholder */}
+             
               <div
                 className="rounded-cv-xl h-[220px] md:h-[320px] w-full flex items-center justify-center mb-cv-xl shrink-0"
                 style={{ backgroundColor: "#DCDCDC" }}
@@ -50,7 +50,7 @@ export default function Section2() {
                 </svg>
               </div>
 
-              {/* Title */}
+              
               <h3
                 className="italic font-cv-regular leading-cv-snug mb-cv-sm font-cv-serif text-cv-purple"
                 style={{ fontSize: "26px" }}
@@ -58,12 +58,12 @@ export default function Section2() {
                 {item.title}
               </h3>
 
-              {/* Desc */}
+              
               <p className="text-cv-xs leading-cv-relaxed mb-cv-lg grow font-cv-sans" style={{ color: "#111111" }}>
                 {item.desc}
               </p>
 
-              {/* Price + Arrow */}
+              
               <div className="flex items-center justify-between pt-cv-lg border-t border-cv-border">
                 <span className="text-cv-sm font-cv-medium font-cv-sans text-cv-gold">
                   {item.price}

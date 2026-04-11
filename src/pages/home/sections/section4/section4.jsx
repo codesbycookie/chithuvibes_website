@@ -3,7 +3,7 @@ export default function AuthenticitySection() {
     <section className="bg-white box-border px-cv-lg py-cv-3xl md:px-cv-4xl md:py-cv-section">
       <div className="mx-auto text-center" style={{ maxWidth: "860px" }}>
 
-        {/* Gold compass icon */}
+        
         <div className="flex justify-center mb-cv-xl">
           <svg width="36" height="44" viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line x1="18" y1="4" x2="6" y2="38" stroke="var(--color-cv-gold)" strokeWidth="2" strokeLinecap="round" />
@@ -13,7 +13,7 @@ export default function AuthenticitySection() {
           </svg>
         </div>
 
-        {/* Heading */}
+        
         <h2
           className="italic font-cv-regular leading-cv-snug mb-cv-2xl font-cv-serif text-cv-purple"
           style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
@@ -21,7 +21,7 @@ export default function AuthenticitySection() {
           The Edge of Authenticity
         </h2>
 
-        {/* Description */}
+        
         <p
           className="text-cv-base leading-[1.85] mx-auto mb-cv-3xl md:mb-cv-3xl w-full font-cv-sans"
           style={{ color: "#555555", maxWidth: "700px" }}
@@ -29,7 +29,7 @@ export default function AuthenticitySection() {
           Unlike generic fonts, our designs are based on hand-drawn calligraphy by Tamil masters. We then vectorize these unique strokes to maintain the "human touch" even after the laser has done its work.
         </p>
 
-        {/* Stats */}
+       
         <div
           className="grid grid-cols-3 gap-cv-lg md:gap-cv-xl mx-auto"
           style={{ maxWidth: "600px" }}

@@ -4,7 +4,7 @@ export default function FounderSection() {
       className="grid grid-cols-1 md:grid-cols-2 min-h-[520px]"
       style={{ backgroundColor: "#EDEAF2" }}
     >
-      {/* LEFT — image placeholder */}
+      
       <div className="flex items-stretch px-cv-lg py-cv-xl md:pl-cv-3xl md:pr-cv-xl md:py-cv-xl">
         <div
           className="rounded-cv-md w-full flex items-center justify-center min-h-[280px] md:min-h-0"
@@ -27,14 +27,14 @@ export default function FounderSection() {
         </div>
       </div>
 
-      {/* RIGHT — content */}
+      
       <div className="flex items-center box-border px-cv-lg py-cv-3xl md:pl-cv-2xl md:pr-cv-4xl md:py-cv-4xl">
         <div className="w-full">
 
-          {/* Gold line */}
+          
           <div className="w-14 h-cv-pxsm mb-cv-xl bg-cv-gold" />
 
-          {/* Heading */}
+      
           <h2
             className="font-cv-regular leading-cv-snug mb-cv-xl font-cv-serif text-cv-purple"
             style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
@@ -42,7 +42,7 @@ export default function FounderSection() {
             A Note from the Founder
           </h2>
 
-          {/* Quote */}
+         
           <p
             className="italic leading-[1.75] mb-cv-xl font-cv-serif text-cv-purple w-full"
             style={{
@@ -53,12 +53,12 @@ export default function FounderSection() {
             "In every stroke of Tamil script, there is a rhythm. My goal was to capture that rhythm and make it permanent. Each piece we create is more than decor—it's a piece of our shared identity."
           </p>
 
-          {/* Name */}
+          
           <p className="text-cv-xs font-cv-bold tracking-cv-wider uppercase mb-cv-xs font-cv-sans text-cv-gold">
             Chithu Vibes
           </p>
 
-          {/* Title */}
+          
           <p className="text-cv-label tracking-cv-wide uppercase font-cv-sans text-cv-muted">
             Master Calligrapher &amp; Founder
           </p>

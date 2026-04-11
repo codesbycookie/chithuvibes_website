@@ -9,7 +9,7 @@ export default function Section1() {
         style={{ maxWidth: "1200px" }}
       >
 
-        {/* LEFT */}
+       
         <div className="flex flex-col items-start">
           <p
             className="mb-cv-xl uppercase text-cv-label tracking-cv-wider font-cv-sans text-cv-purple"
@@ -57,10 +57,10 @@ export default function Section1() {
           </button>
         </div>
 
-        {/* RIGHT */}
+        
         <div className="relative pb-cv-3xl">
           <div
-            className="rounded-cv-md h-[300px] md:h-[500px] w-full flex items-center justify-center"
+            className="rounded-cv-md h-[300px] md:h-[500px] w-full flex items-center justify-center z-cv-base"
             style={{ backgroundColor: "#D8D8D8" }}
           >
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#BBBBBB" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
