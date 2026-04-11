@@ -6,35 +6,43 @@ export default function Section2() {
   ];
 
   return (
-    <section style={{ backgroundColor: "#faf4f4", padding: "72px 72px 80px", boxSizing: "border-box" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
+    <section
+      className="box-border py-cv-4xl px-cv-lg pb-cv-4xl md:px-cv-4xl md:py-cv-4xl md:pb-cv-4xl"
+      style={{ backgroundColor: "#faf4f4" }}
+    >
+      <div className="w-full mx-auto" style={{ maxWidth: "1200px" }}>
 
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "40px" }}>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "52px", fontStyle: "italic", fontWeight: 400, color: "#3D3566", margin: 0, lineHeight: 1.1 }}>
+        
+        <div className="flex items-start justify-between mb-cv-3xl">
+          <h2
+            className="m-0 leading-cv-tight italic font-cv-regular font-cv-serif text-cv-purple"
+            style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
+          >
             The Masterpieces
           </h2>
-          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#AAAAAA", marginTop: "16px" }}>
+          <p className="mt-cv-md text-cv-label tracking-cv-wider uppercase font-cv-sans text-cv-muted">
             Curated Selection / 2024
           </p>
         </div>
 
-        {/* Cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0px", borderTop: "1px solid #E0DCE8", borderLeft: "1px solid #E0DCE8", borderRight: "1px solid #E0DCE8", borderBottom: "1px solid #E0DCE8", borderRadius: "8px", overflow: "hidden" }}>
+       
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 rounded-cv-md overflow-hidden border border-cv-border"
+          style={{ gap: "0px" }}
+        >
           {items.map((item, index) => (
             <div
               key={item.title}
+              className="bg-white flex flex-col cursor-pointer box-border p-cv-xl pb-cv-2xl border-b border-cv-border md:border-b-0"
               style={{
-                backgroundColor: "#ffffff",
-                padding: "28px 28px 32px",
-                cursor: "pointer",
-                boxSizing: "border-box",
-                borderRight: index < 2 ? "1px solid #E0DCE8" : "none",
-                display: "flex",
-                flexDirection: "column",
+                borderRight: index < 2 ? "1px solid var(--color-cv-border)" : "none",
               }}
             >
-              {/* Image — fixed height */}
-              <div style={{ backgroundColor: "#DCDCDC", borderRadius: "12px", height: "320px", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "28px", flexShrink: 0 }}>
+             
+              <div
+                className="rounded-cv-xl h-[220px] md:h-[320px] w-full flex items-center justify-center mb-cv-xl shrink-0"
+                style={{ backgroundColor: "#DCDCDC" }}
+              >
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#BBBBBB" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
                   <circle cx="8.5" cy="8.5" r="1.5" />
@@ -42,26 +50,32 @@ export default function Section2() {
                 </svg>
               </div>
 
-              {/* Title */}
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "26px", fontWeight: 400, fontStyle: "italic", color: "#3D3566", marginBottom: "10px", lineHeight: 1.2 }}>
+              
+              <h3
+                className="italic font-cv-regular leading-cv-snug mb-cv-sm font-cv-serif text-cv-purple"
+                style={{ fontSize: "26px" }}
+              >
                 {item.title}
               </h3>
 
-              {/* Desc — flex grow to push price to bottom */}
-              <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "13px", color: "#111111", lineHeight: 1.7, marginBottom: "24px", flexGrow: 1 }}>
+              
+              <p className="text-cv-xs leading-cv-relaxed mb-cv-lg grow font-cv-sans" style={{ color: "#111111" }}>
                 {item.desc}
               </p>
 
-              {/* Price + arrow */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #E0DCE8", paddingTop: "20px" }}>
-                <span style={{ fontFamily: "'Jost', sans-serif", fontSize: "14px", color: "#C9A84C", fontWeight: 500 }}>
+              
+              <div className="flex items-center justify-between pt-cv-lg border-t border-cv-border">
+                <span className="text-cv-sm font-cv-medium font-cv-sans text-cv-gold">
                   {item.price}
                 </span>
-                <span style={{ color: "#C9A84C", fontSize: "22px", lineHeight: 1, fontWeight: 300 }}>›</span>
+                <span className="text-cv-xl leading-none font-cv-light text-cv-gold">
+                  ›
+                </span>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-// OrderSection.jsx
 import { useState, useEffect } from "react";
 
 const testimonials = [
@@ -28,7 +27,6 @@ export default function OrderSection() {
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(true);
 
-  // Auto-rotate every 4 seconds with fade
   useEffect(() => {
     const timer = setInterval(() => {
       setVisible(false);
@@ -48,72 +46,84 @@ export default function OrderSection() {
     }, 400);
   };
 
-  const left = testimonials[active % testimonials.length];
+  const left  = testimonials[active % testimonials.length];
   const right = testimonials[(active + 1) % testimonials.length];
 
   return (
-    <section style={{ backgroundColor: "#ffffff", padding: "96px 72px", boxSizing: "border-box" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+    <section className="bg-white box-border px-cv-lg py-cv-3xl md:px-cv-4xl md:py-cv-5xl">
+      <div className="w-full mx-auto" style={{ maxWidth: "1200px" }}>
 
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "56px", fontWeight: 400, color: "#3D3566", textAlign: "center", marginBottom: "16px", lineHeight: 1.1 }}>
+
+        <h2
+          className="font-cv-regular text-center leading-cv-tight mb-cv-md font-cv-serif text-cv-purple"
+          style={{ fontSize: "clamp(32px, 4vw, 56px)" }}
+        >
           Order directly with us
         </h2>
-        <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "15px", color: "#AAAAAA", textAlign: "center", marginBottom: "72px" }}>
+
+        
+        <p className="text-cv-sm text-center mb-cv-3xl md:mb-cv-3xl font-cv-sans text-cv-muted">
           Discuss your vision and place your order through WhatsApp.
         </p>
 
-        {/* Two testimonials with fade */}
+       
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "64px",
-            marginBottom: "56px",
-            opacity: visible ? 1 : 0,
-            transition: "opacity 0.4s ease",
-          }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-cv-3xl md:gap-cv-3xl mb-cv-3xl"
+          style={{ opacity: visible ? 1 : 0, transition: `opacity var(--duration-cv-slow) ease` }}
         >
           {[left, right].map((t, i) => (
-            <div key={i} style={{ textAlign: "center" }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", color: "#333333", lineHeight: 1.75, marginBottom: "36px" }}>
+            <div key={i} className="text-center">
+              <p
+                className="leading-[1.75] mb-cv-2xl font-cv-serif"
+                style={{
+                  fontSize: "clamp(17px, 2vw, 22px)",
+                  color: "#333333",
+                }}
+              >
                 "{t.quote}"
               </p>
-              <div style={{ width: "56px", height: "56px", borderRadius: "50%", backgroundColor: "#CCCCCC", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+
+              
+              <div
+                className="w-14 h-14 rounded-cv-full flex items-center justify-center mx-auto mb-cv-md"
+                style={{ backgroundColor: "#CCCCCC" }}
+              >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#999999" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
                   <circle cx="8.5" cy="8.5" r="1.5" />
                   <polyline points="21 15 16 10 5 21" />
                 </svg>
               </div>
-              <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "13px", fontWeight: 600, color: "#3D3566", marginBottom: "4px", letterSpacing: "0.03em" }}>
+
+           
+              <p className="text-cv-xs font-cv-semibold tracking-cv-normal mb-cv-xs font-cv-sans text-cv-purple">
                 {t.name}
               </p>
-              <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "13px", color: "#999999" }}>
+
+              
+              <p className="text-cv-xs font-cv-sans text-cv-muted">
                 {t.title}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Dots */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+        
+        <div className="flex justify-center gap-cv-sm">
           {testimonials.map((_, i) => (
             <button
               key={i}
               onClick={() => handleDot(i)}
+              className="border-none cursor-pointer p-0 h-cv-sm rounded-cv-full"
               style={{
                 width: i === active ? "28px" : "10px",
-                height: "10px",
-                borderRadius: "5px",
-                backgroundColor: i === active ? "#3D3566" : "#CCCCCC",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-                transition: "all 0.3s ease",
+                backgroundColor: i === active ? "var(--color-cv-purple)" : "#CCCCCC",
+                transition: `all var(--duration-cv-base) ease`,
               }}
             />
           ))}
         </div>
+
       </div>
     </section>
   );

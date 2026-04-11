@@ -1,13 +1,128 @@
 @import "tailwindcss";
 
 
-
 @theme {
-  --color-cv-white:    #F5F3F7;
-  --color-cv-mauve:    #9B84B2;
-  --color-cv-plum:     #3A2740;
-  --color-cv-charcoal: #4F4F4F;
-  --color-cv-gold:     #D4AF37;
+
+
+    --color-cv-white: #F5F3F7;
+    --color-cv-mauve: #9B84B2;
+    --color-cv-plum: #3A2740;
+    --color-cv-charcoal: #4F4F4F;
+    --color-cv-gold: #C9A84C;
+    --color-cv-purple: #3D3566;
+    --color-cv-muted: #999999;
+    --color-cv-black: #1A1A1A;
+    --color-cv-soft: #E8E4EE;
+    --color-cv-border: #D9D3E0;
+
+
+
+    --spacing-cv-px: 1px;
+    --spacing-cv-pxsm: 2px;
+    --spacing-cv-xs: 4px;
+    --spacing-cv-sm: 8px;
+    --spacing-cv-md: 16px;
+    --spacing-cv-lg: 24px;
+    --spacing-cv-xl: 32px;
+    --spacing-cv-2xl: 48px;
+    --spacing-cv-3xl: 64px;
+    --spacing-cv-4xl: 80px;
+    --spacing-cv-5xl: 96px;
+    --spacing-cv-section: 120px;
+    --spacing-cv-hero: 160px;
+
+
+
+    --font-cv-serif: "Cormorant Garamond", serif;
+    --font-cv-sans: "Jost", sans-serif;
+
+
+
+    --text-cv-label: 11px;
+    --text-cv-xs: 12px;
+    --text-cv-sm: 14px;
+    --text-cv-base: 16px;
+    --text-cv-md: 18px;
+    --text-cv-lg: 20px;
+    --text-cv-xl: 24px;
+    --text-cv-2xl: 32px;
+    --text-cv-3xl: 44px;
+    --text-cv-4xl: 60px;
+    --text-cv-5xl: 72px;
+    --text-cv-hero: 90px;
+
+
+
+    --font-weight-cv-light: 300;
+    --font-weight-cv-regular: 400;
+    --font-weight-cv-medium: 500;
+    --font-weight-cv-semibold: 600;
+    --font-weight-cv-bold: 700;
+
+
+
+    --leading-cv-tight: 1.05;
+    --leading-cv-snug: 1.2;
+    --leading-cv-normal: 1.5;
+    --leading-cv-relaxed: 1.7;
+
+
+
+    --tracking-cv-tight: -0.01em;
+    --tracking-cv-normal: 0em;
+    --tracking-cv-wide: 0.1em;
+    --tracking-cv-wider: 0.2em;
+    --tracking-cv-widest: 0.3em;
+
+
+
+    --radius-cv-none: 0px;
+    --radius-cv-xs: 2px;
+    --radius-cv-sm: 4px;
+    --radius-cv-md: 8px;
+    --radius-cv-lg: 12px;
+    --radius-cv-xl: 16px;
+    --radius-cv-full: 9999px;
+
+
+
+    --border-cv-thin: 1px;
+    --border-cv-base: 1.5px;
+    --border-cv-md: 2px;
+    --border-cv-thick: 3px;
+
+
+
+    --shadow-cv-sm: 0 1px 4px 0 rgba(61, 53, 102, 0.08);
+    --shadow-cv-md: 0 4px 16px 0 rgba(61, 53, 102, 0.12);
+    --shadow-cv-lg: 0 8px 32px 0 rgba(61, 53, 102, 0.16);
+    --shadow-cv-gold: 0 4px 24px 0 rgba(201, 168, 76, 0.20);
+
+
+
+    --opacity-cv-ghost: 0.04;
+    --opacity-cv-subtle: 0.12;
+    --opacity-cv-muted: 0.40;
+    --opacity-cv-soft: 0.64;
+    --opacity-cv-full: 1;
+
+
+
+    --duration-cv-fast: 150ms;
+    --duration-cv-base: 250ms;
+    --duration-cv-slow: 400ms;
+    --duration-cv-xslow: 600ms;
+
+
+
+    --z-cv-below: -1;
+    --z-cv-base: 0;
+    --z-cv-raised: 10;
+    --z-cv-overlay: 100;
+    --z-cv-modal: 200;
+    --z-cv-toast: 300;
+    --z-cv-top: 9999;
+
 }
 
 

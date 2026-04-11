@@ -1,62 +1,31 @@
-// BespokeSection.jsx
 export default function BespokeSection() {
   return (
     <section
-      style={{
-        backgroundColor: "#EDEAF2",
-        padding: "100px 72px",
-        textAlign: "center",
-        boxSizing: "border-box",
-      }}
+      className="box-border text-center px-cv-lg py-cv-3xl md:px-cv-4xl md:py-cv-section"
+      style={{ backgroundColor: "#EDEAF2" }}
     >
-      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-        {/* Heading */}
+      <div className="mx-auto" style={{ maxWidth: "800px" }}>
+
+        
         <h2
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "72px",
-            fontWeight: 400,
-            color: "#3D3566",
-            lineHeight: 1.1,
-            marginBottom: "24px",
-          }}
+          className="font-cv-regular leading-cv-tight mb-cv-lg font-cv-serif text-cv-purple"
+          style={{ fontSize: "clamp(36px, 5vw, 72px)" }}
         >
           Begin Your Bespoke Journey
         </h2>
- 
-        {/* Sub */}
-        <p
-          style={{
-            fontFamily: "'Jost', sans-serif",
-            fontSize: "15px",
-            color: "#AAAAAA",
-            marginBottom: "48px",
-            lineHeight: 1.7,
-          }}
-        >
+
+        
+        <p className="text-cv-sm leading-cv-relaxed mb-cv-3xl font-cv-sans text-cv-muted">
           Custom requests, bulk orders, or personal engravings. We are just a message away.
         </p>
- 
-        {/* WhatsApp button */}
+
         <button
-  style={{
-    background: "linear-gradient(to right, #f5e6a5, #e3c15b, #d4af37)",
-    color: "#3D3566",
-    fontFamily: "'Jost', sans-serif",
-    fontSize: "12px",
-    fontWeight: 700,
-    letterSpacing: "0.18em",
-    textTransform: "uppercase",
-    padding: "18px 48px",
-    border: "none",
-    cursor: "pointer",
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "12px",
-    boxShadow: "0 6px 24px rgba(201,168,76,0.3)",
-  }}
->
-          {/* Chat bubble icon */}
+          className="border-none cursor-pointer inline-flex items-center gap-cv-lg text-cv-xs font-cv-bold tracking-cv-wider uppercase px-cv-2xl py-cv-md font-cv-sans text-cv-purple"
+          style={{
+            background: "linear-gradient(to right, #f5e6a5, #D4AF37, #D4AF37)",
+            boxShadow: "0 6px 24px rgba(201,168,76,0.3)",
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -72,6 +41,7 @@ export default function BespokeSection() {
           </svg>
           Order via WhatsApp
         </button>
+
       </div>
     </section>
   );

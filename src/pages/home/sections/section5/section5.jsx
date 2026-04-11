@@ -1,31 +1,14 @@
-// FounderSection.jsx
 export default function FounderSection() {
   return (
     <section
-      style={{
-        backgroundColor: "#EDEAF2",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        minHeight: "520px",
-      }}
+      className="grid grid-cols-1 md:grid-cols-2 min-h-[520px]"
+      style={{ backgroundColor: "#EDEAF2" }}
     >
-      {/* ── LEFT — image placeholder ── */}
-      <div
-        style={{
-          padding: "40px 40px 40px 60px",
-          display: "flex",
-          alignItems: "stretch",
-        }}
-      >
+      
+      <div className="flex items-stretch px-cv-lg py-cv-xl md:pl-cv-3xl md:pr-cv-xl md:py-cv-xl">
         <div
-          style={{
-            backgroundColor: "#D5D5D5",
-            borderRadius: "8px",
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          className="rounded-cv-md w-full flex items-center justify-center min-h-[280px] md:min-h-0"
+          style={{ backgroundColor: "#D5D5D5" }}
         >
           <svg
             width="90"
@@ -43,83 +26,43 @@ export default function FounderSection() {
           </svg>
         </div>
       </div>
- 
-      {/* ── RIGHT — content ── */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          padding: "80px 72px 80px 48px",
-          boxSizing: "border-box",
-        }}
-      >
-        <div>
-          {/* Gold line */}
-          <div
-            style={{
-              width: "56px",
-              height: "3px",
-              backgroundColor: "#C9A84C",
-              marginBottom: "28px",
-            }}
-          />
- 
-          {/* Heading */}
+
+      
+      <div className="flex items-center box-border px-cv-lg py-cv-3xl md:pl-cv-2xl md:pr-cv-4xl md:py-cv-4xl">
+        <div className="w-full">
+
+          
+          <div className="w-14 h-cv-pxsm mb-cv-xl bg-cv-gold" />
+
+      
           <h2
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "52px",
-              fontWeight: 400,
-              color: "#3D3566",
-              marginBottom: "28px",
-              lineHeight: 1.2,
-            }}
+            className="font-cv-regular leading-cv-snug mb-cv-xl font-cv-serif text-cv-purple"
+            style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
           >
             A Note from the Founder
           </h2>
- 
-          {/* Quote */}
+
+         
           <p
+            className="italic leading-[1.75] mb-cv-xl font-cv-serif text-cv-purple w-full"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "22px",
-              fontStyle: "italic",
-              color: "#3D3566",
-              lineHeight: 1.75,
-              marginBottom: "32px",
+              fontSize: "clamp(17px, 2vw, 22px)",
               maxWidth: "520px",
             }}
           >
             "In every stroke of Tamil script, there is a rhythm. My goal was to capture that rhythm and make it permanent. Each piece we create is more than decor—it's a piece of our shared identity."
           </p>
- 
-          {/* Name */}
-          <p
-            style={{
-              fontFamily: "'Jost', sans-serif",
-              fontSize: "12px",
-              fontWeight: 700,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "#C9A84C",
-              marginBottom: "6px",
-            }}
-          >
+
+          
+          <p className="text-cv-xs font-cv-bold tracking-cv-wider uppercase mb-cv-xs font-cv-sans text-cv-gold">
             Chithu Vibes
           </p>
- 
-          {/* Title */}
-          <p
-            style={{
-              fontFamily: "'Jost', sans-serif",
-              fontSize: "11px",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "#999999",
-            }}
-          >
+
+          
+          <p className="text-cv-label tracking-cv-wide uppercase font-cv-sans text-cv-muted">
             Master Calligrapher &amp; Founder
           </p>
+
         </div>
       </div>
     </section>
