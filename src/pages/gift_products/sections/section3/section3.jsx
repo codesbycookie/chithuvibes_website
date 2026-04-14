@@ -18,7 +18,7 @@ function SparkleIcon() {
 export default function Section3() {
   function openWhatsApp() {
     window.open(
-      "https://wa.me/919876543210?text=" +
+      "https://wa.me/919884923998?text=" +
         encodeURIComponent(
           "Hi! I'm interested in a bespoke keepsake from Chithu Vibes."
         ),
@@ -28,19 +28,16 @@ export default function Section3() {
 
   return (
     <section className="bg-cv-white px-cv-lg py-cv-5xl md:px-cv-4xl">
-      <div
-        className="w-full mx-auto flex flex-col items-center text-center"
-        style={{ maxWidth: "640px" }}
-      >
-        {/* Sparkle */}
+      <div className="mx-auto flex flex-col items-center text-center max-w-[640px]">
+
+        {/* Sparkle Icon */}
         <div className="mb-cv-lg">
           <SparkleIcon />
         </div>
 
         {/* Quote */}
         <blockquote
-          className="m-0 mb-cv-xl font-cv-serif italic font-cv-regular leading-cv-relaxed text-cv-black"
-          style={{ fontSize: "clamp(18px, 2.5vw, 26px)" }}
+          className="m-0 mb-cv-xl font-cv-serif italic font-cv-regular leading-cv-relaxed text-cv-black text-[clamp(18px,2.5vw,26px)]"
         >
           "True art is the bridge between the transient moment and eternal
           memory. We don't just craft items; we etch soul into matter."
@@ -51,25 +48,22 @@ export default function Section3() {
           The Artisan's Touch
         </p>
 
-        {/* CTA Button */}
+        {/* CTA Button - Fully Tailwind (No inline styles or JS hover) */}
         <button
           onClick={openWhatsApp}
-          className="w-full md:w-auto flex items-center justify-center gap-cv-sm px-cv-xl py-cv-md md:px-cv-2xl rounded-cv-full font-cv-sans text-cv-xs font-cv-semibold tracking-cv-wide uppercase text-white border-none cursor-pointer transition"
-          style={{
-            backgroundColor: "var(--color-cv-plum)",
-            transitionDuration: "var(--duration-cv-base)",
-            lineHeight: "1.6",
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.backgroundColor = "var(--color-cv-purple)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.backgroundColor = "var(--color-cv-plum)")
-          }
+          className="w-full md:w-auto flex items-center justify-center gap-cv-sm 
+                     px-cv-xl py-cv-md md:px-cv-2xl 
+                     rounded-cv-full 
+                     font-cv-sans text-cv-xs font-cv-semibold tracking-cv-wide uppercase 
+                     text-white border-none cursor-pointer 
+                     bg-cv-plum hover:bg-cv-purple 
+                     transition-colors duration-cv-base
+                     leading-relaxed"
         >
           <span>Inquire via WhatsApp for Bespoke Keepsakes</span>
           <span>→</span>
         </button>
+
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useCart } from "../../../../context/cart.context";
 import { useNavigate } from "react-router-dom";
+import ProductCard from "../../../../components/product_card/product_card";
+import CartProductCard from "../../../../components/product_card/cartproduct_card";   // ← Import the new component
 
 // ── Icons ──────────────────────────────────────────────────────────────────
 
@@ -61,7 +63,15 @@ function EmptyCartIcon() {
   );
 }
 
-// ── Empty state ────────────────────────────────────────────────────────────
+// ── Recommended products ───────────────────────────────────────────────────
+
+const recommendedProducts = [
+  { id: 1,  name: "Hand-Drawn Tamil Inscription", description: "Custom archival ink on handmade parchment",    price: 420, image: "/images/products/tamil-inscription-1.jpg" },
+  { id: 4,  name: "Laser-Etched Keepsake Box",    description: "Precision detailed patterns on solid maple",  price: 780, image: "/images/products/box-1.jpg" },
+  { id: 6,  name: "Acrylic Memory Block",          description: "High-clarity optical grade acrylic prisms",  price: 995, image: "/images/products/acrylic-1.jpg" },
+];
+
+// ── Empty cart state ───────────────────────────────────────────────────────
 
 function EmptyCart({ onBrowse }) {
   return (
@@ -69,27 +79,15 @@ function EmptyCart({ onBrowse }) {
       <div className="text-cv-border mb-cv-lg">
         <EmptyCartIcon />
       </div>
-      <h3
-        className="m-0 mb-cv-sm font-cv-serif italic font-cv-regular text-cv-black"
-        style={{ fontSize: "clamp(22px, 3vw, 32px)" }}
-      >
+      <h3 className="m-0 mb-cv-sm font-cv-serif italic font-cv-regular text-cv-black text-cv-xl md:text-cv-2xl">
         Your cart is empty
       </h3>
-      <p className="m-0 mb-cv-2xl font-cv-sans text-cv-sm font-cv-light text-cv-muted leading-cv-relaxed" style={{ maxWidth: "320px" }}>
+      <p className="m-0 mb-cv-2xl font-cv-sans text-cv-sm font-cv-light text-cv-muted leading-cv-relaxed max-w-xs">
         Explore our calligraphy and gift collections and add something beautiful to your selection.
       </p>
       <button
         onClick={onBrowse}
-        className="border border-cv-gold bg-transparent cursor-pointer font-cv-sans text-cv-xs font-cv-semibold tracking-cv-wide uppercase text-cv-gold px-cv-2xl py-cv-md rounded-cv-xs transition"
-        style={{ transitionDuration: "var(--duration-cv-base)" }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "var(--color-cv-gold)";
-          e.currentTarget.style.color = "white";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "transparent";
-          e.currentTarget.style.color = "var(--color-cv-gold)";
-        }}
+        className="border border-cv-gold bg-transparent cursor-pointer font-cv-sans text-cv-xs font-cv-semibold tracking-cv-wide uppercase text-cv-gold px-cv-2xl py-cv-md rounded-cv-xs transition duration-cv-base hover:bg-cv-gold hover:text-white"
       >
         Browse Collection
       </button>
@@ -97,184 +95,68 @@ function EmptyCart({ onBrowse }) {
   );
 }
 
-// ── Main section ───────────────────────────────────────────────────────────
+// ── Main Section ───────────────────────────────────────────────────────────
 
 export default function Section2() {
-  const {
-    cartItems,
-    increaseQuantity,
-    decreaseQuantity,
-    removeFromCart,
-    clearCart,
-    subtotal,
-  } = useCart();
-
+  const { cartItems, clearCart, subtotal, openWhatsApp ,setIsGift, setNote, isGift, note} = useCart();
   const navigate = useNavigate();
-  const [isGift, setIsGift] = useState(false);
-  const [note, setNote] = useState("");
 
-  function openWhatsApp() {
-    const itemsList = cartItems
-      .map((i) => `${i.name} x${i.quantity} — ₹${(i.price * i.quantity).toLocaleString()}`)
-      .join("\n");
-    const giftNote = isGift ? "\n\n🎁 This is a gift order." : "";
-    const artistNote = note ? `\n\nNote for artist: ${note}` : "";
-    window.open(
-      "https://wa.me/919876543210?text=" +
-        encodeURIComponent(
-          `Hi! I'd like to finalize my Chithu Vibes order:\n\n${itemsList}\n\nEstimated Total: ₹${subtotal.toLocaleString()}${giftNote}${artistNote}`
-        ),
-      "_blank"
-    );
-  }
-
-  // Empty cart state
+  // ── Empty state ──
   if (cartItems.length === 0) {
     return (
       <section className="bg-cv-white px-cv-lg pb-cv-5xl md:px-cv-4xl">
-        <div className="w-full mx-auto" style={{ maxWidth: "1100px" }}>
+        <div className="w-full max-w-screen-lg mx-auto">
           <EmptyCart onBrowse={() => navigate("/calligraphy-products")} />
+
+          {/* Recommended products */}
+          <div className="mt-cv-3xl">
+            <p className="m-0 mb-cv-xl font-cv-sans text-cv-label font-cv-medium tracking-cv-widest uppercase text-cv-muted">
+              You Might Like
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-cv-3xl">
+              {recommendedProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     );
   }
 
+  // ── Filled cart ──
   return (
     <section className="bg-cv-white px-cv-lg py-cv-2xl pb-cv-5xl md:px-cv-4xl">
-      <div
-        className="w-full mx-auto grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-cv-3xl items-start"
-        style={{ maxWidth: "1100px" }}
-      >
+      <div className="w-full max-w-screen-lg mx-auto grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-cv-3xl items-start">
 
-        {/* ── LEFT — Cart Items ── */}
+        {/* ── LEFT — Items ── */}
         <div>
 
-          {/* Header row */}
+          {/* Header */}
           <div className="flex items-center justify-between mb-cv-2xl">
             <p className="m-0 font-cv-sans text-cv-sm font-cv-medium text-cv-charcoal">
               {cartItems.length} {cartItems.length === 1 ? "item" : "items"} in your selection
             </p>
             <button
               onClick={clearCart}
-              className="bg-transparent border-none cursor-pointer font-cv-sans text-cv-xs font-cv-medium text-cv-muted underline underline-offset-4 transition"
-              style={{ transitionDuration: "var(--duration-cv-base)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-cv-gold)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-cv-muted)")}
+              className="bg-transparent border-none cursor-pointer font-cv-sans text-cv-xs font-cv-medium text-cv-muted underline underline-offset-4 transition duration-cv-base hover:text-cv-gold"
             >
               Clear all
             </button>
           </div>
 
-          {/* Cart item list */}
+          {/* Item rows — Using the new reusable CartItemCard */}
           <div className="flex flex-col">
             {cartItems.map((item, index) => (
-              <div
+              <CartProductCard
                 key={item.id}
-                className="flex gap-cv-lg py-cv-2xl"
-                style={{
-                  borderBottom: index < cartItems.length - 1
-                    ? "1px solid var(--color-cv-border)"
-                    : "none",
-                }}
-              >
-                {/* Product image */}
-                <div
-                  className="shrink-0 rounded-cv-md overflow-hidden bg-cv-soft"
-                  style={{ width: "100px", height: "100px" }}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => (e.target.style.display = "none")}
-                  />
-                </div>
-
-                {/* Product info */}
-                <div className="flex-1 min-w-0 flex flex-col justify-between">
-                  <div>
-                    <h3
-                      className="m-0 mb-cv-xs font-cv-serif font-cv-semibold text-cv-black leading-cv-snug"
-                      style={{ fontSize: "clamp(14px, 1.6vw, 18px)" }}
-                    >
-                      {item.name}
-                    </h3>
-                    <p className="m-0 mb-cv-sm font-cv-sans text-cv-xs font-cv-light text-cv-muted leading-cv-normal">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Price + controls row */}
-                  <div className="flex items-center justify-between gap-cv-sm flex-wrap mt-cv-sm">
-
-                    {/* Price */}
-                    <span className="font-cv-sans text-cv-base font-cv-semibold text-cv-gold">
-                      ₹{(item.price * item.quantity).toLocaleString()}
-                    </span>
-
-                    <div className="flex items-center gap-cv-md">
-
-                      {/* Quantity controls */}
-                      <div
-                        className="flex items-center border border-cv-border rounded-cv-xs overflow-hidden"
-                        style={{ height: "32px" }}
-                      >
-                        <button
-                          onClick={() => decreaseQuantity(item.id)}
-                          className="px-cv-sm bg-transparent border-none cursor-pointer font-cv-sans text-cv-md text-cv-charcoal transition flex items-center justify-center"
-                          style={{
-                            transitionDuration: "var(--duration-cv-fast)",
-                            minWidth: "32px",
-                            height: "100%",
-                          }}
-                          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--color-cv-soft)")}
-                          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
-                          title={item.quantity === 1 ? "Remove item" : "Decrease quantity"}
-                        >
-                          −
-                        </button>
-                        <span
-                          className="font-cv-sans text-cv-sm font-cv-medium text-cv-black text-center"
-                          style={{ minWidth: "28px" }}
-                        >
-                          {item.quantity}
-                        </span>
-                        <button
-                          onClick={() => increaseQuantity(item.id)}
-                          className="px-cv-sm bg-transparent border-none cursor-pointer font-cv-sans text-cv-md text-cv-charcoal transition flex items-center justify-center"
-                          style={{
-                            transitionDuration: "var(--duration-cv-fast)",
-                            minWidth: "32px",
-                            height: "100%",
-                          }}
-                          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--color-cv-soft)")}
-                          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
-                          title="Increase quantity"
-                        >
-                          +
-                        </button>
-                      </div>
-
-                      {/* Remove button */}
-                      <button
-                        onClick={() => removeFromCart(item.id)}
-                        className="bg-transparent border-none cursor-pointer text-cv-muted transition flex items-center justify-center p-cv-xs rounded-cv-xs"
-                        style={{ transitionDuration: "var(--duration-cv-base)" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-cv-gold)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-cv-muted)")}
-                        title="Remove from cart"
-                      >
-                        <TrashIcon />
-                      </button>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
+                item={item}
+                isLast={index === cartItems.length - 1}
+              />
             ))}
           </div>
 
-          {/* A Personal Touch */}
+          {/* Personal touch */}
           <div className="flex gap-cv-md items-start mt-cv-3xl pt-cv-3xl border-t border-cv-border">
             <div className="shrink-0 mt-cv-xs">
               <SparkleIcon />
@@ -297,14 +179,9 @@ export default function Section2() {
         </div>
 
         {/* ── RIGHT — Summary Card ── */}
-        <div
-          className="bg-white rounded-cv-lg shadow-cv-md p-cv-xl border border-cv-border w-full"
-          style={{ position: "sticky", top: "88px" }}
-        >
-          <h3
-            className="m-0 mb-cv-xl font-cv-serif font-cv-regular text-cv-black"
-            style={{ fontSize: "clamp(22px, 2.5vw, 28px)" }}
-          >
+        <div className="bg-white rounded-cv-lg shadow-cv-md p-cv-xl border border-cv-border w-full sticky top-24">
+
+          <h3 className="m-0 mb-cv-xl font-cv-serif font-cv-regular text-cv-black text-cv-xl md:text-cv-2xl">
             Summary
           </h3>
 
@@ -318,15 +195,11 @@ export default function Section2() {
 
           {/* Studio processing */}
           <div className="flex items-center justify-between pb-cv-lg border-b border-cv-border mb-cv-lg">
-            <span className="font-cv-sans text-cv-sm font-cv-light text-cv-charcoal">
-              Studio Processing
-            </span>
-            <span className="font-cv-sans text-cv-xs font-cv-medium text-cv-muted italic">
-              Complimentary
-            </span>
+            <span className="font-cv-sans text-cv-sm font-cv-light text-cv-charcoal">Studio Processing</span>
+            <span className="font-cv-sans text-cv-xs font-cv-medium text-cv-muted italic">Complimentary</span>
           </div>
 
-          {/* Gift checkbox */}
+          {/* Gift toggle */}
           <div className="flex items-start gap-cv-sm mb-cv-lg">
             <div className="shrink-0 mt-cv-xs">
               <input
@@ -334,19 +207,11 @@ export default function Section2() {
                 id="is-gift"
                 checked={isGift}
                 onChange={(e) => setIsGift(e.target.checked)}
-                className="cursor-pointer"
-                style={{
-                  accentColor: "var(--color-cv-gold)",
-                  width: "16px",
-                  height: "16px",
-                }}
+                className="cursor-pointer w-cv-md h-cv-md accent-cv-gold"
               />
             </div>
             <div>
-              <label
-                htmlFor="is-gift"
-                className="font-cv-sans text-cv-sm font-cv-medium text-cv-black cursor-pointer"
-              >
+              <label htmlFor="is-gift" className="font-cv-sans text-cv-sm font-cv-medium text-cv-black cursor-pointer">
                 Is this a gift?
               </label>
               <p className="m-0 font-cv-sans text-cv-xs font-cv-light text-cv-muted leading-cv-normal mt-cv-xs">
@@ -355,16 +220,11 @@ export default function Section2() {
             </div>
           </div>
 
-          {/* Estimated Total */}
+          {/* Estimated total */}
           <div className="flex items-end justify-between mb-cv-xl">
-            <span className="font-cv-sans text-cv-base font-cv-medium text-cv-black">
-              Estimated Total
-            </span>
+            <span className="font-cv-sans text-cv-base font-cv-medium text-cv-black">Estimated Total</span>
             <div className="text-right">
-              <p
-                className="m-0 font-cv-serif font-cv-semibold text-cv-gold"
-                style={{ fontSize: "clamp(20px, 2vw, 26px)" }}
-              >
+              <p className="m-0 font-cv-serif font-cv-semibold text-cv-gold text-cv-xl md:text-cv-2xl">
                 ₹{subtotal.toLocaleString()}
               </p>
               <p className="m-0 font-cv-sans text-cv-label font-cv-regular tracking-cv-wide uppercase text-cv-muted">
@@ -373,7 +233,7 @@ export default function Section2() {
             </div>
           </div>
 
-          {/* Note for artist */}
+          {/* Note textarea */}
           <p className="m-0 mb-cv-sm font-cv-sans text-cv-xs font-cv-medium tracking-cv-wide uppercase text-cv-muted">
             A Note for the Artist
           </p>
@@ -383,18 +243,9 @@ export default function Section2() {
               onChange={(e) => setNote(e.target.value)}
               placeholder="Share your personalization details or special requests..."
               rows={4}
-              className="w-full font-cv-sans text-cv-xs font-cv-light text-cv-charcoal leading-cv-relaxed border border-cv-border rounded-cv-md p-cv-md resize-none outline-none transition"
-              style={{
-                transitionDuration: "var(--duration-cv-base)",
-                backgroundColor: "var(--color-cv-white)",
-              }}
-              onFocus={(e) => (e.target.style.borderColor = "var(--color-cv-gold)")}
-              onBlur={(e) => (e.target.style.borderColor = "var(--color-cv-border)")}
+              className="w-full font-cv-sans text-cv-xs font-cv-light text-cv-charcoal leading-cv-relaxed border border-cv-border rounded-cv-md p-cv-md resize-none outline-none transition duration-cv-base bg-cv-white focus:border-cv-gold"
             />
-            <span
-              className="absolute bottom-cv-sm right-cv-md font-cv-serif italic pointer-events-none select-none"
-              style={{ fontSize: "18px", color: "var(--color-cv-border)", opacity: 0.6 }}
-            >
+            <span className="absolute bottom-cv-sm right-cv-md font-cv-serif italic pointer-events-none select-none text-cv-border text-cv-md opacity-cv-soft">
               Artistry in Motion
             </span>
           </div>
@@ -402,13 +253,7 @@ export default function Section2() {
           {/* Finalize button */}
           <button
             onClick={openWhatsApp}
-            className="w-full flex items-center justify-center gap-cv-sm py-cv-md px-cv-lg rounded-cv-sm font-cv-sans text-cv-sm font-cv-semibold tracking-cv-wide uppercase text-white border-none cursor-pointer transition mb-cv-lg"
-            style={{
-              backgroundColor: "var(--color-cv-gold)",
-              transitionDuration: "var(--duration-cv-base)",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--color-cv-plum)")}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--color-cv-gold)")}
+            className="w-full flex items-center justify-center gap-cv-sm py-cv-md px-cv-lg rounded-cv-sm font-cv-sans text-cv-sm font-cv-semibold tracking-cv-wide uppercase text-white border-none cursor-pointer transition duration-cv-base bg-cv-gold hover:bg-cv-plum mb-cv-lg"
           >
             <ChatIcon />
             Finalize Design via WhatsApp
@@ -434,10 +279,7 @@ export default function Section2() {
           <div className="text-center">
             <button
               onClick={() => navigate("/calligraphy-products")}
-              className="bg-transparent border-none cursor-pointer font-cv-sans text-cv-xs font-cv-medium tracking-cv-wide uppercase text-cv-muted underline underline-offset-4 transition"
-              style={{ transitionDuration: "var(--duration-cv-base)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-cv-gold)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-cv-muted)")}
+              className="bg-transparent border-none cursor-pointer font-cv-sans text-cv-xs font-cv-medium tracking-cv-wide uppercase text-cv-muted underline underline-offset-4 transition duration-cv-base hover:text-cv-gold"
             >
               Continue Browsing Collection
             </button>
