@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ShoppingCart, Check } from "lucide-react";
 
 
-function ProductImageCarousel({ images }) {
+export function ProductImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const imageList = Array.isArray(images) ? images : [images];
   // const imageList=images.split(",").map((url) => url.trim());

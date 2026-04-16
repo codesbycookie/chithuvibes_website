@@ -1,18 +1,54 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_SERVICE_ID = "service_w1ccqt4";
+const EMAILJS_TEMPLATE_ID = "template_0obwdow";
+const EMAILJS_PUBLIC_KEY = "tZ6uCr0jgGzlfsL97";
 
 const penImageUrl =
   "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=90";
 
 export default function BespokeJourney() {
-  const [form, setForm] = useState({
-    name: "",
-    mobile: "",
-    email: "",
-    vision: "",
-  });
+  const [form, setForm] = useState({ name: "", mobile: "", email: "", vision: "" });
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async () => {
+    if (!form.name || !form.email) {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          name: form.name,
+          email: form.email,
+          mobile: form.mobile,
+          reply_to: form.email,
+          message: form.vision,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+      setStatus("success");
+      setForm({ name: "", mobile: "", email: "", vision: "" });
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      setStatus("error");
+    } finally {
+      setTimeout(() => setStatus("idle"), 4000);
+    }
+  };
+
+  const isSending = status === "sending";
 
   return (
     <section className="bg-cv-soft min-h-screen font-cv-sans py-cv-xl">
@@ -25,7 +61,6 @@ export default function BespokeJourney() {
         >
           Begin Your Bespoke Journey
         </h1>
-
         <p className="tracking-cv-wider text-cv-label text-cv-muted font-cv-medium">
           PRIVATE CONSULTATION &amp; STUDIO ACCESS
         </p>
@@ -33,8 +68,6 @@ export default function BespokeJourney() {
 
       {/* Container */}
       <div className="container mx-auto px-cv-xl md:px-cv-3xl">
-
-        {/* Content */}
         <div className="flex flex-col md:flex-row items-start gap-cv-3xl lg:gap-cv-4xl">
 
           {/* Image */}
@@ -42,45 +75,53 @@ export default function BespokeJourney() {
             <img
               src={penImageUrl}
               alt="Fountain pen"
-              className="w-full h-[320px] md:h-[600px] object-cover  shadow-lg"
+              className="w-full h-[320px] md:h-[600px] object-cover shadow-lg"
             />
           </div>
 
           {/* Form */}
           <div className="flex-1 w-full max-w-[620px]">
 
-            <p className="tracking-cv-wider text-cv-md text-cv-muted font-cv-medium mb-cv-2xl">
-              SUBMIT AN INQUIRY
-            </p>
+            <div className="mb-cv-2xl">
+              <p className="tracking-cv-wider text-cv-md text-cv-muted font-cv-medium">
+                SUBMIT AN INQUIRY
+              </p>
+
+              {status !== "idle" && (
+                <p
+                  className={`mt-cv-sm font-cv-serif italic text-cv-md transition-all duration-500 ${status === "success"
+                    ? "text-cv-gold"
+                    : status === "error"
+                      ? "text-red-400"
+                      : "text-cv-muted opacity-60"
+                    }`}
+                >
+                  {status === "success" && "✦ Your inquiry has been received — we shall be in touch."}
+                  {status === "error" && "Something went astray. Please try once more."}
+                  {status === "sending" && "Sending your inquiry..."}
+                </p>
+              )}
+            </div>
 
             {/* Name + Mobile */}
             <div className="flex flex-col sm:flex-row gap-cv-xl">
               {[
-                {
-                  name: "name",
-                  label: "NAME",
-                  placeholder: "E.g. Elena Varma",
-                },
-                {
-                  name: "mobile",
-                  label: "MOBILE NUMBER",
-                  placeholder: "+91 00000 00000",
-                },
+                { name: "name", label: "NAME", placeholder: "E.g. Elena Varma" },
+                { name: "mobile", label: "MOBILE NUMBER", placeholder: "+91 00000 00000" },
               ].map(({ name, label, placeholder }) => (
                 <div key={name} className="flex-1 flex flex-col min-w-0">
                   <label className="tracking-cv-wide text-cv-sm font-cv-bold text-cv-plum mb-cv-sm">
                     {label}
                   </label>
-
                   <input
                     name={name}
                     value={form[name]}
                     onChange={handleChange}
+                    autoComplete="off"
                     placeholder={placeholder}
-                    className="bg-transparent outline-none text-cv-md text-cv-muted py-cv-sm font-cv-serif italic w-full placeholder:text-cv-muted focus:placeholder:opacity-50"
+                    className="bg-transparent outline-none text-cv-md text-cv-muted py-cv-sm font-cv-serif italic w-full placeholder:text-cv-muted"
                   />
-
-                  <div className="h-cv-px bg-cv-border mt-cv-sm transition-all duration-300 focus-within:bg-cv-gold" />
+                  <div className="h-cv-px bg-cv-border mt-cv-sm" />
                 </div>
               ))}
             </div>
@@ -90,16 +131,15 @@ export default function BespokeJourney() {
               <label className="tracking-cv-wide text-cv-sm font-cv-bold text-cv-plum mb-cv-sm">
                 EMAIL ADDRESS
               </label>
-
               <input
                 name="email"
                 value={form.email}
                 onChange={handleChange}
+                autoComplete="off"
                 placeholder="email@address.com"
                 className="bg-transparent outline-none text-cv-md text-cv-muted py-cv-sm font-cv-serif italic placeholder:text-cv-muted"
               />
-
-              <div className="h-cv-px bg-cv-border mt-cv-sm transition-all duration-300 focus-within:bg-cv-gold" />
+              <div className="h-cv-px bg-cv-border mt-cv-sm" />
             </div>
 
             {/* Vision */}
@@ -107,21 +147,22 @@ export default function BespokeJourney() {
               <label className="tracking-cv-wide text-cv-sm font-cv-bold text-cv-plum mb-cv-sm">
                 SPECIFIC NEEDS &amp; VISION
               </label>
-
               <textarea
                 name="vision"
                 value={form.vision}
                 onChange={handleChange}
+                autoComplete="off"
                 placeholder="Tell us about the project, dimensions, or sentiments you wish to capture..."
                 className="bg-transparent outline-none text-cv-md text-cv-muted py-cv-sm font-cv-serif italic resize-none leading-cv-relaxed placeholder:text-cv-muted"
                 rows={4}
               />
-
-              <div className="h-cv-px bg-cv-border mt-cv-sm transition-all duration-300 focus-within:bg-cv-gold" />
+              <div className="h-cv-px bg-cv-border mt-cv-sm" />
             </div>
 
             {/* Button */}
             <button
+              disabled={isSending}
+              onClick={handleSubmit}
               className="
                 mt-cv-3xl
                 inline-flex items-center gap-3
@@ -135,9 +176,10 @@ export default function BespokeJourney() {
                 hover:scale-[1.03] hover:brightness-110
                 hover:shadow-[0_12px_32px_rgba(212,175,55,0.5)]
                 active:scale-[0.98]
+                disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100
               "
             >
-              SEND INQUIRY →
+              {isSending ? "SENDING..." : "SEND INQUIRY →"}
             </button>
 
           </div>

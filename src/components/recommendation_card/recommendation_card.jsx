@@ -1,64 +1,79 @@
 import { useCart } from "../../context/cart.context";
-import { Check} from "lucide-react";
+import { Check } from "lucide-react";
 
-
-export default function ProductCard({ product }) {
+export default function RecommendationCard({ product }) {
   const { cartItems, addToCart } = useCart();
-  const isInCart = cartItems.some((item) => item.id === product.id);
 
-  const imageSrc = Array.isArray(product.images) ? product.images[0] : product.images;
+  const isInCart = cartItems.some((item) => item.id === product.id);
+  const imageSrc = Array.isArray(product.images)
+    ? product.images[0]
+    : product.images;
 
   return (
-    <div className="bg-cv-white rounded-cv-xl shadow-cv-md overflow-hidden flex items-center 
-                    p-cv-sm sm:p-cv-md w-full max-w-[520px] mx-auto">
-      
-      {/* Image */}
-      <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex-shrink-0 
-                      rounded-cv-lg overflow-hidden bg-cv-black">
-        <img
-          src={imageSrc}
-          alt={product.name}
-          className="w-full h-full object-cover"
-          onError={(e) => (e.target.style.display = "none")}
-        />
-      </div>
+    <div className="
+  bg-cv-white rounded-xl border border-cv-border
+  shadow-sm hover:shadow-md transition-all duration-300
+  flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4
+  w-full max-w-[560px] mx-auto
+">
 
-      {/* Content */}
-      <div className="flex-1 px-cv-sm sm:px-cv-md py-cv-px min-w-0">
-        <h3 className="font-cv-sans text-cv-base sm:text-cv-md font-cv-medium text-cv-charcoal 
-                       leading-tight tracking-tight line-clamp-1">
-          {product.name || "Matching Calligraphic Miniature"}
-        </h3>
-        <p className="font-cv-sans text-cv-sm text-cv-muted leading-snug mt-cv-pxsm line-clamp-2">
-          {product.description || "Fridge magnet version of your bespoke design"}
-        </p>
-      </div>
+  {/* Image */}
+  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex-shrink-0 rounded-lg overflow-hidden bg-cv-black/5">
+    <img
+      src={imageSrc}
+      alt={product.name}
+      className="w-full h-full object-cover"
+    />
+  </div>
 
-      {/* Static Size Button */}
-      <button
-        onClick={() => addToCart(product)}
-        className={`flex-shrink-0 w-36 sm:w-40 border border-cv-gold rounded-cv-lg 
-                    py-2.5 sm:py-3 text-cv-sm font-cv-medium tracking-cv-wide 
-                    flex items-center justify-center gap-1 transition duration-cv-base
-                    hover:bg-cv-gold hover:text-cv-white
-                    ${isInCart
-                      ? "bg-cv-gold text-cv-white"
-                      : "text-cv-gold bg-transparent"
-                    }`}
-      >
-        {isInCart ? (
-          <>
-            <Check color="#000" size={15} />
-            <span className="hidden sm:inline">ADDED</span>
-          </>
-        ) : (
-          <>
-            ADD
-            <span className="text-cv-gold">•</span>
-            <span className="font-cv-semibold">₹{product.price?.toLocaleString("en-IN") || "850"}</span>
-          </>
-        )}
-      </button>
+  {/* Content + CTA */}
+  <div className="flex w-full justify-between items-start sm:items-center gap-3">
+
+    {/* Content */}
+    <div className="flex-1 min-w-0">
+      <h3 className="text-sm sm:text-base md:text-lg font-medium line-clamp-1">
+        {product.name}
+      </h3>
+
+      <p className="text-xs sm:text-sm text-cv-muted mt-1 line-clamp-2">
+        {product.description}
+      </p>
+
+      {/* Mobile price */}
+      <p className="mt-2 text-sm font-semibold text-cv-gold sm:hidden">
+        ₹{product.price?.toLocaleString("en-IN")}
+      </p>
     </div>
+
+    {/* CTA */}
+    <button
+      onClick={() => addToCart(product)}
+      className={`
+        flex-shrink-0
+        px-3 sm:px-4 py-2 sm:py-2.5
+        rounded-md text-xs sm:text-sm font-medium
+        flex items-center gap-1.5
+        ${isInCart
+          ? "bg-cv-gold text-white"
+          : "border border-cv-gold text-cv-gold hover:bg-cv-gold hover:text-white"}
+      `}
+    >
+      {isInCart ? (
+        <>
+          <Check size={14} />
+          <span className="hidden sm:inline">Added</span>
+        </>
+      ) : (
+        <>
+          Add
+          <span className="hidden sm:inline font-semibold">
+            • ₹{product.price?.toLocaleString("en-IN")}
+          </span>
+        </>
+      )}
+    </button>
+
+  </div>
+</div>
   );
 }

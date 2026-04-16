@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../../context/cart.context";
 import { ShoppingCart} from "lucide-react";
 
@@ -24,9 +24,13 @@ const CloseIcon = () => (
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const location = useLocation();
+const location = useLocation();
   const { totalItems } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+      useEffect(() => setMenuOpen(false), [location]);
 
   const isActive = (path) => location.pathname.startsWith(path);
 

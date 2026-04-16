@@ -6,6 +6,16 @@ const CartContext = createContext(null);
 
 const SHEET_ID = "2PACX-1vSyUN6eOAjpL9aaEY8NuJB5FKO_7IxDQ3bO4Y0DyhMKuV_gDZwP6xqmDhMgWSfGaWA3Vj2QXrONq5mX";
 
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const openWhatsApp = (phone, message) => {
+  const encodedMessage = encodeURIComponent(message);
+  const url = `https://wa.me/${phone}?text=${encodedMessage}`;
+  window.open(url, "_blank");
+};
+
+
+
 export function CartProvider({ children }) {
   // 🛒 Cart state
   const [cartItems, setCartItems] = useState(() => {
@@ -31,6 +41,7 @@ export function CartProvider({ children }) {
   }, [cartItems]);
 
   // 🔄 Transform function (single source of truth)
+  // eslint-disable-next-line no-unused-vars
   const transformProduct = (item) => ({
     id: item.id || item.product_id || "",
     name: item.name || item.product_name || "",
@@ -45,23 +56,28 @@ export function CartProvider({ children }) {
       : [],
   });
 
+
+
   // 🌐 Fetch products
   // ✅ Define all sheet URLs outside the useEffect (easy to add new sheets)
   const PRODUCT_SHEETS = [
     {
       url: `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv&gid=0`,
       setter: setCalligraphyProducts,
-      name: "Calligraphy"   // for better error logging
+      name: "Calligraphy",   // for better error logging,
+      isProducts: true
     },
     {
       url: `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv&gid=2069942511`,
       setter: setGiftProducts,
-      name: "Gift"
+      name: "Gift",
+      isProducts: true
     },
     {
       url: `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv&gid=1069805616`,
       setter: setTestimonials,
-      name: "Testimonials"
+      name: "Testimonials",
+      isProducts: false
     },
     // Just add more objects here when you need new sheets ↑
   ];
@@ -70,10 +86,10 @@ export function CartProvider({ children }) {
     let completed = 0;
     const total = PRODUCT_SHEETS.length;
 
-    const handleComplete = (results, setter) => {
-      const formatted = results.data
-        .map(transformProduct)
-        .filter((p) => p.id && p.name);
+    const handleComplete = (results, setter, isProducts) => {
+      let formatted = results.data
+
+      formatted = isProducts ? formatted.map(transformProduct) : formatted;
 
       setter(formatted);
 
@@ -86,13 +102,17 @@ export function CartProvider({ children }) {
     const fetchProducts = () => {
       setLoading(true);
 
-      PRODUCT_SHEETS.forEach(({ url, setter, name }) => {
+      PRODUCT_SHEETS.forEach(({ url, setter, name, isProducts }) => {
         Papa.parse(url, {
           download: true,
           header: true,
           skipEmptyLines: true,
 
-          complete: (results) => handleComplete(results, setter),
+          complete: (results) => {
+            console.log(results)
+            handleComplete(results, setter, isProducts)
+          }
+          ,
 
           error: (err) => {
             console.error(`Error parsing ${name} sheet:`, err);
@@ -106,6 +126,9 @@ export function CartProvider({ children }) {
 
     fetchProducts();
   }, []);
+
+
+  console.log(testimonials)
 
   // 🛒 Cart functions
 
@@ -169,46 +192,50 @@ export function CartProvider({ children }) {
     0
   );
 
-// Add this function with other cart functions
-const updateQuantity = (productId, newQuantity) => {
-  if (newQuantity < 1) return;
+  // Add this function with other cart functions
+  const updateQuantity = (productId, newQuantity) => {
+    if (newQuantity < 1) return;
 
-  setCartItems((prev) =>
-    prev.map((item) =>
-      item.id === productId
-        ? { ...item, quantity: newQuantity }
-        : item
-    )
-  );
-};
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.id === productId
+          ? { ...item, quantity: newQuantity }
+          : item
+      )
+    );
+  };
 
-  // 📲 WhatsApp integration
+
+  const homePageWhatsapp = (phone, message) => {
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/${phone}?text=${encodedMessage}`;
+    window.open(url, "_blank");
+  };
+
   const openWhatsApp = () => {
     const itemsList = cartItems
       .map(
         (i) =>
-          `${i.name} x${i.quantity} — ₹${(
-            i.price * i.quantity
-          ).toLocaleString("en-IN")}`
+          `  • ${i.name} × ${i.quantity}  —  ₹${(i.price * i.quantity).toLocaleString("en-IN")}`
       )
       .join("\n");
 
-    const giftNote = isGift
-      ? "\n\n🎁 This is a gift order."
-      : "";
+    const giftLine = isGift ? "\n🎁 *This is a gift order.* Please wrap accordingly.\n" : "";
+    const noteLine = note ? `\n📝 *Note for the artist:*\n_${note}_\n` : "";
 
-    const artistNote = note
-      ? `\n\nNote for artist: ${note}`
-      : "";
-
-    const message = `Hi! I'd like to finalize my Chithu Vibes order:\n\n${itemsList}\n\nEstimated Total: ₹${subtotal.toLocaleString(
-      "en-IN"
-    )}${giftNote}${artistNote}`;
+    const message =
+      `🖋️ *New Order — Chithu Vibes*\n` +
+      `━━━━━━━━━━━━━━━━━━\n\n` +
+      `Hello! I'd love to place the following order:\n\n` +
+      `*Items:*\n${itemsList}\n\n` +
+      `*Order Total:* ₹${subtotal.toLocaleString("en-IN")}\n` +
+      `━━━━━━━━━━━━━━━━━━` +
+      `${giftLine}` +
+      `${noteLine}` +
+      `\nLooking forward to hearing from you! 🌸`;
 
     window.open(
-      `https://wa.me/919884923998?text=${encodeURIComponent(
-        message
-      )}`,
+      `https://wa.me/919884923998?text=${encodeURIComponent(message)}`,
       "_blank"
     );
   };
@@ -236,11 +263,13 @@ const updateQuantity = (productId, newQuantity) => {
         subtotal,
         totalItems,
         openWhatsApp,
+        homePageWhatsapp,
         inquireBespoke,
         isGift,
         setIsGift,
         note,
         setNote,
+        testimonials,
         calligraphyProducts,
         giftProducts,
         loading,

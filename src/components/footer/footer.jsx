@@ -63,10 +63,10 @@ export default function Footer() {
               {[col1].map((col, ci) => (
                 <ul key={ci} className="list-none p-0 m-0 flex flex-col gap-cv-md md:gap-cv-lg">
                   {col.map(({ label, path }) => (
-                    <li key={label}>
+                    <li className='text-start md:text-end' key={label}>
                       <Link 
                         to={path}
-                        className="bg-transparent border-none cursor-pointer p-0 text-left font-cv-sans text-cv-base font-cv-regular text-white leading-none"
+                        className="bg-transparent border-none cursor-pointer p-0 text-left text-end font-cv-sans text-cv-base font-cv-regular text-white leading-none"
                       >
                         {label}
                       </Link>

@@ -224,3 +224,16 @@
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.75 0.13 85);
 }
+
+
+
+/* Autofill fix for your theme */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #F0EEF5 inset !important;
+  box-shadow: 0 0 0px 1000px #F0EEF5 inset !important;
+
+  -webkit-text-fill-color: #555555 !important;
+
+  transition: background-color 5000s ease-in-out 0s;
+}
