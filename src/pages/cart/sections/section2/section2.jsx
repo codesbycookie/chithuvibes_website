@@ -1,7 +1,7 @@
 import { useCart } from "../../../../context/cart.context";
 import { useNavigate } from "react-router-dom";
 import CartProductCard from "../../../../components/cartproduct_card/cartproduct_card";
-import ProductCard from "../../../../components/product_card/product_card";
+import RecommendationCard from "../../../../components/recommendation_card/recommendation_card";
 
 function EmptyCart({ onBrowse }) {
   return (
@@ -58,6 +58,7 @@ export default function Section2() {
 
   const randomGiftProducts = getRandomProducts(giftProducts, 3);
   const randomCalligraphyProducts = getRandomProducts(calligraphyProducts, 3);
+  
 
   const navigate = useNavigate();
   const hasItems = cartItems.length > 0;
@@ -232,12 +233,12 @@ export default function Section2() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-cv-3xl">
             {randomGiftProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <RecommendationCard key={product.id} product={product} />
             ))}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-cv-3xl mt-cv-3xl">
             {randomCalligraphyProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <RecommendationCard key={product.id} product={product} />
             ))}
           </div>
         </div>

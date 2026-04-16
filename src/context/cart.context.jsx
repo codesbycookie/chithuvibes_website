@@ -19,6 +19,7 @@ export function CartProvider({ children }) {
   // 📦 Product state
   const [calligraphyProducts, setCalligraphyProducts] = useState([]);
   const [giftProducts, setGiftProducts] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // 💾 Save cart to cookies
@@ -38,63 +39,69 @@ export function CartProvider({ children }) {
     price: Number(item.price || item.product_price) || 0,
     images: item.images || item.product_images
       ? (item.images || item.product_images)
-          .split(",")
-          .map((img) => img.trim())
-          .filter(Boolean)
+        .split(",")
+        .map((img) => img.trim())
+        .filter(Boolean)
       : [],
   });
 
   // 🌐 Fetch products
+  // ✅ Define all sheet URLs outside the useEffect (easy to add new sheets)
+  const PRODUCT_SHEETS = [
+    {
+      url: `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv&gid=0`,
+      setter: setCalligraphyProducts,
+      name: "Calligraphy"   // for better error logging
+    },
+    {
+      url: `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv&gid=2069942511`,
+      setter: setGiftProducts,
+      name: "Gift"
+    },
+    {
+      url: `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv&gid=1069805616`,
+      setter: setTestimonials,
+      name: "Testimonials"
+    },
+    // Just add more objects here when you need new sheets ↑
+  ];
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const baseUrl = `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv`;
+    let completed = 0;
+    const total = PRODUCT_SHEETS.length;
 
-        const [calligraphyRes, giftRes] = await Promise.all([
-          fetch(`${baseUrl}&gid=0`),
-          fetch(`${baseUrl}&gid=2069942511`),
-        ]);
+    const handleComplete = (results, setter) => {
+      const formatted = results.data
+        .map(transformProduct)
+        .filter((p) => p.id && p.name);
 
-        // ❗ Validate response
-        if (!calligraphyRes.ok || !giftRes.ok) {
-          throw new Error("Failed to fetch product data");
-        }
+      setter(formatted);
 
-        const calligraphyText = await calligraphyRes.text();
-        const giftText = await giftRes.text();
-
-        // 📄 Parse CSV → JSON
-        const parsedCalligraphy = Papa.parse(calligraphyText, {
-          header: true,
-          skipEmptyLines: true,
-        }).data;
-
-        const parsedGift = Papa.parse(giftText, {
-          header: true,
-          skipEmptyLines: true,
-        }).data;
-
-        // 🔥 Transform data
-        const formattedCalligraphy = parsedCalligraphy
-          .map(transformProduct)
-          .filter((p) => p.id && p.name);
-
-        const formattedGift = parsedGift
-          .map(transformProduct)
-          .filter((p) => p.id && p.name);
-
-        // 📦 Set state
-        setCalligraphyProducts(formattedCalligraphy);
-        setGiftProducts(formattedGift);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-
-        // Optional fallback
-        setCalligraphyProducts([]);
-        setGiftProducts([]);
-      } finally {
+      completed++;
+      if (completed === total) {
         setLoading(false);
       }
+    };
+
+    const fetchProducts = () => {
+      setLoading(true);
+
+      PRODUCT_SHEETS.forEach(({ url, setter, name }) => {
+        Papa.parse(url, {
+          download: true,
+          header: true,
+          skipEmptyLines: true,
+
+          complete: (results) => handleComplete(results, setter),
+
+          error: (err) => {
+            console.error(`Error parsing ${name} sheet:`, err);
+            setter([]);
+            completed++;
+            if (completed === total) setLoading(false);
+          },
+        });
+      });
     };
 
     fetchProducts();
@@ -196,9 +203,9 @@ export function CartProvider({ children }) {
   const inquireBespoke = () => {
     window.open(
       "https://wa.me/919884923998?text=" +
-        encodeURIComponent(
-          "Hi! I'm interested in a bespoke keepsake from Chithu Vibes."
-        ),
+      encodeURIComponent(
+        "Hi! I'm interested in a bespoke keepsake from Chithu Vibes."
+      ),
       "_blank"
     );
   };

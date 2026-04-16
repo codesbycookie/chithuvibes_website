@@ -26,7 +26,7 @@ function ProductImageCarousel({ images }) {
   const prev = () => setCurrentIndex((prev) => (prev - 1 + imageList.length) % imageList.length);
 
   return (
-    <div className="relative w-full rounded-cv-md overflow-hidden bg-cv-soft aspect-[4/3] group">
+    <div className="relative w-full rounded-cv-md overflow-hidden bg-cv-soft aspect-7/8 group">
       <img
         src={imageList[currentIndex]}
         alt="product"
@@ -87,7 +87,7 @@ export default function ProductCard({ product }) {
         </p>
 
         <div className="flex items-center justify-between gap-cv-sm mt-auto">
-          <span className="font-cv-sans text-cv-sm font-cv-semibold text-cv-gold">
+          <span className="font-cv-sans text-cv-sm font-cv-semibold text-[#735C00]">
             ₹{product.price.toLocaleString("en-IN")}
           </span>
           <AddToCartButton product={product} />
