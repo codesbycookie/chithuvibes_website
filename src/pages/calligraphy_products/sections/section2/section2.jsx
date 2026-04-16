@@ -16,7 +16,7 @@ export default function Section2() {
   }
 
   return (
-    <section className="bg-cv-white px-cv-lg py-cv-5xl md:px-cv-4xl">
+    <section className="bg-cv-white  px-cv-lg py-cv-5xl md:px-cv-4xl">
       <div className="w-full max-w-screen-xl mx-auto">
 
         {/* Section Header */}
