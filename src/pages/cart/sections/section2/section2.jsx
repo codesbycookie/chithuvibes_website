@@ -228,7 +228,7 @@ export default function Section2() {
 
         {/* Recommended Products Section - Larger spacing */}
         <div className="mt-cv-7xl">
-          <p className="mb-cv-2xl font-cv-sans text-cv-label font-cv-medium tracking-widest uppercase text-cv-muted text-center">
+          <p className="mb-cv-2xl mt-cv-2xl font-cv-sans text-cv-label font-cv-medium tracking-widest uppercase text-cv-muted text-center">
             You Might Also Like
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-cv-3xl">

@@ -1,20 +1,6 @@
 import { useCart } from "../../context/cart.context";
+import { Check} from "lucide-react";
 
-function CartIcon() {
-  return (
-    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-  );
-}
 
 export default function ProductCard({ product }) {
   const { cartItems, addToCart } = useCart();
@@ -62,7 +48,7 @@ export default function ProductCard({ product }) {
       >
         {isInCart ? (
           <>
-            <CheckIcon />
+            <Check color="#000" size={15} />
             <span className="hidden sm:inline">ADDED</span>
           </>
         ) : (

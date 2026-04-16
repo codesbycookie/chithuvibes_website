@@ -1,21 +1,7 @@
 import { useCart } from "../../context/cart.context";
 import { useState } from "react";
+import { ShoppingCart,Check} from "lucide-react";
 
-function CartIcon() {
-  return (
-    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-  );
-}
 
 function ProductImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,7 +53,7 @@ function AddToCartButton({ product }) {
           : "bg-transparent border-cv-border text-cv-muted hover:bg-cv-gold hover:border-cv-gold hover:text-white"
       }`}
     >
-      {isInCart ? <CheckIcon /> : <CartIcon />}
+      {isInCart ? <Check color="#000" /> : <ShoppingCart color="#735C00" />}
     </button>
   );
 }
