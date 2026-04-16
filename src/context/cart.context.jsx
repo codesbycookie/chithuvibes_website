@@ -169,6 +169,19 @@ export function CartProvider({ children }) {
     0
   );
 
+// Add this function with other cart functions
+const updateQuantity = (productId, newQuantity) => {
+  if (newQuantity < 1) return;
+
+  setCartItems((prev) =>
+    prev.map((item) =>
+      item.id === productId
+        ? { ...item, quantity: newQuantity }
+        : item
+    )
+  );
+};
+
   // 📲 WhatsApp integration
   const openWhatsApp = () => {
     const itemsList = cartItems
@@ -218,6 +231,7 @@ export function CartProvider({ children }) {
         removeFromCart,
         increaseQuantity,
         decreaseQuantity,
+        updateQuantity,
         clearCart,
         subtotal,
         totalItems,
