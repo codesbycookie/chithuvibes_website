@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../../context/cart.context";
+import { ShoppingCart} from "lucide-react";
 
 const navLinks = [
   { label: "OUR STORY",            path: "/about" },
@@ -8,12 +9,6 @@ const navLinks = [
   { label: "GIFT PRODUCTS",        path: "/gift-products" },
   { label: "CONTACT",              path: "/contact" },
 ];
-
-const CartIcon = () => (
-  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-  </svg>
-);
 
 const MenuIcon = () => (
   <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
@@ -97,7 +92,7 @@ export default function Navbar() {
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-cv-purple)")}
               aria-label="View cart"
             >
-              <CartIcon />
+              <ShoppingCart color="#735C00" />
               {totalItems > 0 && (
                 <span
                   className="absolute bg-cv-gold text-white font-cv-sans font-cv-semibold rounded-cv-full flex items-center justify-center"

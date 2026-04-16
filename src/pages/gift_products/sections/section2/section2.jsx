@@ -22,12 +22,12 @@ export default function Section2() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-cv-3xl gap-cv-lg">
           <div>
-            <h2 className="m-0 mb-cv-sm font-cv-serif font-cv-regular text-cv-black text-cv-2xl md:text-cv-3xl">
+            <h2 className="m-0 mb-cv-sm font-cv-serif italic font-cv-regular text-cv-black text-cv-2xl md:text-cv-3xl">
               Gift Items
             </h2>
             <div className="w-cv-xl h-cv-pxsm bg-cv-gold" />
           </div>
-          <p className="font-cv-sans text-cv-sm font-cv-light text-cv-muted leading-cv-relaxed md:text-right max-w-xs">
+          <p className="font-cv-sans text-cv-sm font-cv-light text-[#735C00] leading-cv-relaxed md:text-right max-w-xs">
             Modern precision meets sentimental value. Our laser-crafted gifts
             are designed to preserve your most cherished milestones.
           </p>
