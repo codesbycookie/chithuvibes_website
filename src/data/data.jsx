@@ -36,7 +36,11 @@ export const HOME = {
         title: "A Note from the Founder",
         description: "In every stroke of Tamil script, there is a rhythm. My goal was to capture that rhythm and make it permanent. Each piece we create is more than decor—it's a piece of our shared identity.",
         founder: ["Chithu Vibes", "Master Calligrapher", "Founder"]
-    }, section6: {},
+    },
+    
+    section6: {
+        title: ["Order directly with us","Discuss your vision and place your order through WhatsApp."],
+    },
 
     section7: {
         title: "Begin Your Bespoke Journey",
@@ -50,7 +54,21 @@ export const ABOUT = {
 }
 
 export const CALLIGRAPHY_PRODUCTS = {
-    section1: {}, section2: {}, section3: {}, section4: {}, section5: {}, section6: {}
+    section1: {
+        title: ["Premium Boutique","The Collection.", "Artistry","in Every Stroke,", "Precision in", "Every Laser."],
+    },
+    
+    section2: {
+        title: ["Calligraphic Items"],
+        description: "Each piece is hand-crafted with archival materials, celebrating the ancient rhythm of the quill and the beauty of the written word.",
+        sectionStatus :"No calligraphy products available at the moment." ,
+    },
+    
+    section3: {
+        title: "True art is the bridge between the transient moment and eternal memory. We don't just craft items; we etch soul into matter.",
+        description: "The Artisan's Touch",
+        cta: "Inquire via WhatsApp for Bespoke Keepsakes",
+    }
 }
 
 export const GIFT_PRODUCTS = {

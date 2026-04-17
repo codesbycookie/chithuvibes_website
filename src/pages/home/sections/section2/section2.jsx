@@ -8,7 +8,7 @@ export default function Section2({content}) {
     >
       <div className="mx-auto max-w-[1400px]">
 
-        {/* HEADER */}
+        
         <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 md:mb-cv-3xl gap-2">
           <h2
             className="m-0 leading-cv-tight italic font-cv-regular font-cv-serif text-cv-purple"
@@ -22,7 +22,7 @@ export default function Section2({content}) {
           </p>
         </div>
 
-        {/* GRID */}
+        
         <div
           className="grid grid-cols-1 lg:grid-cols-3 rounded-cv-md overflow-hidden border border-cv-border"
         >
@@ -35,7 +35,7 @@ export default function Section2({content}) {
               }}
             >
 
-              {/* IMAGE */}
+              
               <div className='flex flex-col justify-center items-center'>
                 <div
                   className="rounded-cv-xl h-[180px] sm:h-[220px] md:h-[320px] w-full max-w-[600px] flex items-center justify-center mb-5 md:mb-cv-xl shrink-0"
@@ -49,19 +49,19 @@ export default function Section2({content}) {
                 </div>
               </div>
 
-              {/* TITLE */}
+              
               <h3
                 className="italic text-xl sm:text-2xl md:text-3xl font-cv-regular leading-cv-snug mb-2 md:mb-cv-sm font-cv-serif text-cv-purple"
               >
                 {item.title}
               </h3>
 
-              {/* DESC */}
+              
               <p className="text-sm sm:text-base md:text-lg text-cv-muted leading-relaxed md:leading-cv-relaxed mb-5 md:mb-cv-lg grow font-cv-sans">
                 {item.desc}
               </p>
 
-              {/* FOOTER */}
+             
               <div className="flex items-center justify-between pt-4 md:pt-cv-lg border-t border-cv-border">
                 <span className="text-sm md:text-cv-sm font-cv-medium font-cv-sans text-cv-gold">
                   {item.price}

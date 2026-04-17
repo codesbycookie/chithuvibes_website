@@ -10,7 +10,7 @@ export default function Section1({content}) {
         className="w-full px-0 sm:px-cv-lg py-cv-xl md:px-cv-4xl md:py-cv-3xl grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-cv-3xl items-center box-border"
       >
 
-        {/* LEFT */}
+        
         <div className="flex flex-col items-start">
           
           <p
@@ -60,7 +60,7 @@ export default function Section1({content}) {
           </Link>
         </div>
 
-        {/* RIGHT */}
+        
         <div className="relative h-[260px] sm:h-[320px] md:h-full w-full flex items-center justify-center">
           <div
             className="rounded-cv-md h-[500px] w-[500px] flex items-center justify-center z-cv-base"
