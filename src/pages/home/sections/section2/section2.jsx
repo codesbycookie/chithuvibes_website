@@ -1,9 +1,5 @@
-export default function Section2() {
-  const items = [
-    { title: "Wooden Engravings", desc: "Sustainable teak and walnut infused with classical Tamil literature.", price: "From ₹4,500" },
-    { title: "Acrylic Masterpieces", desc: "Modern luminosity meeting traditional script for contemporary spaces.", price: "From ₹3,200" },
-    { title: "Metal Art", desc: "Brass and copper plates etched with surgical precision for lifelong endurance.", price: "From ₹7,800" },
-  ];
+export default function Section2({content}) {
+  const items = content.cardData || [];
 
   return (
     <section
@@ -18,11 +14,11 @@ export default function Section2() {
             className="m-0 leading-cv-tight italic font-cv-regular font-cv-serif text-cv-purple"
             style={{ fontSize: "clamp(26px, 6vw, 52px)" }} // smaller on mobile
           >
-            The Masterpieces
+            {content.title[0]} 
           </h2>
 
           <p className="text-xs sm:text-sm md:mt-cv-md md:text-cv-label tracking-cv-wider uppercase font-cv-sans text-cv-muted">
-            Curated Selection / {new Date().getFullYear()}
+            {content.title[1]} / {new Date().getFullYear()}
           </p>
         </div>
 

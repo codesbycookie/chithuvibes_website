@@ -3,7 +3,7 @@ import { useCart } from "../../../../context/cart.context";
 
 
 
-export default function OrderSection() {
+export default function OrderSection({content}) {
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(true);
   const { testimonials } = useCart();
