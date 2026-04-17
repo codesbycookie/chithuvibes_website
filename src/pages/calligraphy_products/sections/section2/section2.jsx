@@ -9,7 +9,7 @@ export default function Section2({ content }) {
       <section className="bg-cv-white px-cv-lg py-cv-5xl md:px-cv-4xl">
         <div className="w-full max-w-screen-xl mx-auto text-center py-cv-4xl">
           <div className="inline-block w-8 h-8 border-4 border-cv-gold border-t-transparent rounded-full animate-spin" />
-          <p className="mt-cv-md font-cv-sans text-cv-sm text-cv-muted">Loading beautiful calligraphy pieces...</p>
+          <p className="mt-cv-md font-cv-sans text-cv-sm text-cv-muted">{content.title[1]}</p>
         </div>
       </section>
     );

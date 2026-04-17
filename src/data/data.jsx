@@ -59,7 +59,7 @@ export const CALLIGRAPHY_PRODUCTS = {
     },
     
     section2: {
-        title: ["Calligraphic Items"],
+        title: ["Calligraphic Items","Loading beautiful calligraphy pieces..."],
         description: "Each piece is hand-crafted with archival materials, celebrating the ancient rhythm of the quill and the beauty of the written word.",
         sectionStatus :"No calligraphy products available at the moment." ,
     },
@@ -72,7 +72,23 @@ export const CALLIGRAPHY_PRODUCTS = {
 }
 
 export const GIFT_PRODUCTS = {
-    section1: {}, section2: {}, section3: {}, section4: {}, section5: {}, section6: {}
+    section1: {
+        title: ["Premium Boutique","The Collection.", "Artistry","in Every Stroke,", "Precision in", "Every Laser."],
+
+    },
+    
+    section2: {
+        title: ["Gift Items","Loading thoughtful gift pieces..."],
+        description: "Modern precision meets sentimental value. Our laser-crafted gifts are designed to preserve your most cherished milestones.",
+        sectionStatus :"No calligraphy products available at the moment." ,
+
+    },
+     section3: {
+        title: "True art is the bridge between the transient moment and eternal memory. We don't just craft items; we etch soul into matter.",
+        description: "The Artisan's Touch",
+        cta: "Inquire via WhatsApp for Bespoke Keepsakes",
+
+     }, section4: {}, section5: {}, section6: {}
 }
 
 export const CONTACT = {
