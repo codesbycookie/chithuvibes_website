@@ -80,7 +80,27 @@ export const CONTACT = {
 }
 
 export const CART = {
-    section1: {}, section2: {}, section3: {}, section4: {}, section5: {}, section6: {}
+    section1: {
+        title: "Your Selection",
+        description: "Curating your bespoke experience.",
+    },
+     section2: {
+        title: ["You Might Also Like",],
+        cartItemTitle: ["in your selection","A Personal Touch"],
+        cartItemcta: "Clear all ",
+        cartItemDescription: ["Once you inquire,","Jeya Chitra","will personally connect with you via WhatsApp to discuss customization and finalize your bespoke order."],
+        emptyCartTitle: "Your cart is empty",       
+        emptyCartcta: ["Browse Collection",],       
+        emptyCartDescription: "Explore our calligraphy and gift collections and add something beautiful to your selection.",
+        cartSummaryTitle: ["Summary","Subtotal","Studio Processing","Complimentary","Is this a gift?","Include a hand-written calligraphic note by Chithuvibes (+₹200–500)","Final price on consultation"],
+        cartSummaryDescription: ["A Note for the Artist","Artistry in Motion"],
+        cartSummarycta: ["Finalize Design via WhatsApp","Continue Browsing Collection"],
+        cartSummaryTrustBadges: ["Secure Professional Handling","Insured Premium Shipping","100% Artist-Certified Original"],
+        mobileSummaryBarTitle: ["Total",],
+        mobileSummaryBarcta: ["View Summary",],
+        mobileDrawerTitle: ["Summary",],
+
+     }, section3: {}, section4: {}, section5: {}, section6: {}
 }
 
 export const NOT_FOUND = {
