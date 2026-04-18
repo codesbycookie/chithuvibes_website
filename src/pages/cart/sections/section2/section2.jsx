@@ -78,7 +78,7 @@ function CartItems({ cartItems, clearCart, content }) {
 }
 
 
-function CartSummary({ subtotal, isGift, setIsGift, note, setNote, openWhatsApp, navigate }) {
+function CartSummary({ subtotal, isGift, setIsGift, note, setNote, openWhatsApp, navigate,content }) {
   return (
     <div className="bg-white rounded-cv-lg shadow-cv-md p-cv-xl border border-cv-border w-full">
       <h3 className="mb-cv-xl font-cv-serif font-cv-regular text-cv-black text-cv-xl md:text-cv-2xl">
@@ -184,7 +184,7 @@ function CartSummary({ subtotal, isGift, setIsGift, note, setNote, openWhatsApp,
 }
 
 
-function MobileSummaryBar({ subtotal, onOpen }) {
+function MobileSummaryBar({ subtotal, onOpen,content }) {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-cv-white border-t border-cv-border px-cv-lg py-cv-sm flex justify-between items-center lg:hidden z-40 shadow-cv-md">
       <div>
@@ -204,7 +204,7 @@ function MobileSummaryBar({ subtotal, onOpen }) {
 }
 
 
-function MobileSummaryDrawer({ show, onClose, children }) {
+function MobileSummaryDrawer({ show, onClose, children, content }) {
   return (
     <div className={`fixed inset-0 z-50 ${show ? "visible" : "invisible"}`}>
       
@@ -307,16 +307,16 @@ const getRandomProducts = (products, count = 3) => {
 
               
               <div className="hidden lg:block sticky top-24">
-                <CartSummary {...summaryProps} />
+                <CartSummary {...summaryProps} content={content}/>
               </div>
             </div>
 
             
-            <MobileSummaryBar subtotal={subtotal} onOpen={() => setShowSummary(true)} />
+            <MobileSummaryBar subtotal={subtotal} onOpen={() => setShowSummary(true)} content={content}/>
 
             
-            <MobileSummaryDrawer show={showSummary} onClose={() => setShowSummary(false)}>
-              <CartSummary {...summaryProps} />
+            <MobileSummaryDrawer show={showSummary} onClose={() => setShowSummary(false)} content={content}>
+              <CartSummary {...summaryProps} content={content}/>
             </MobileSummaryDrawer>
           </>
         )}
