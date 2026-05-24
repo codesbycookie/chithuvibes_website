@@ -1,14 +1,15 @@
-import { useState } from 'react'
+import { BrowserRouter } from "react-router-dom";
+import { CartProvider } from "../context/cart.context";
+import AppRoutes from "./routes";
+import ScrollToTop from "../hooks/scroll_to_top";
 import './app.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-    <h1 className='text-3xl font-bold underline text-center text-blue-500'>Hello world!</h1>
-    </>
-  )
+    <BrowserRouter>
+      <CartProvider>
+        <ScrollToTop />
+        <AppRoutes />
+      </CartProvider>
+    </BrowserRouter>
+  );
 }
-
-export default App
