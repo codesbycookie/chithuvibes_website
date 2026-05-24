@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useCart } from "../../context/cart.context";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import { NAVBAR } from "../../data/data";
@@ -9,8 +9,6 @@ export default function Navbar() {
   const location = useLocation();
   const { totalItems } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => setMenuOpen(false), [location]);
 
   const isActive = (path) =>
     path === "/"
@@ -25,16 +23,25 @@ export default function Navbar() {
         .nav-mobile-drawer.open { max-height: 400px; opacity: 1; }
       `}</style>
 
-      <nav className="fixed top-0 left-0 right-0 z-[1000] bg-white border-b border-cv-border h-16">
+      <nav className="fixed top-0 left-0 right-0 z-1000 bg-white border-b border-cv-border h-16">
         <div className="w-full h-full px-cv-lg lg:px-cv-3xl flex items-center justify-between box-border">
+          <div className="flex items-center gap-2 lg:gap-cv-md">
+            <img
+              src="https://res.cloudinary.com/dvdmdowip/image/upload/q_auto/f_auto/v1779566643/chithu-vibes/products/img1.png"
+              alt="Chithu Vibes Logo"
+              className="h-8 w-auto cursor-pointer"
+              onClick={() => navigate("/")}
+            />
 
-          <button
-            onClick={() => navigate("/")}
-            className="bg-transparent border-none cursor-pointer p-0 font-cv-serif text-cv-gold italic font-cv-semibold"
-            style={{ fontSize: "22px", letterSpacing: "0.01em" }}
-          >
-            {NAVBAR.logo}
-          </button>
+            <button
+              onClick={() => navigate("/")}
+              className="bg-transparent border-none cursor-pointer p-0 font-cv-serif text-cv-gold italic font-cv-semibold"
+              style={{ fontSize: "22px", letterSpacing: "0.01em" }}
+            >
+
+              {NAVBAR.logo}
+            </button>
+          </div>
 
           <ul
             className="hidden md:flex list-none m-0 p-0 items-center gap-cv-2xl lg:gap-cv-3xl absolute left-1/2"

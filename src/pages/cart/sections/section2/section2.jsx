@@ -324,13 +324,8 @@ const getRandomProducts = (products, count = 3) => {
           <p className="mb-cv-xl font-cv-sans text-cv-label font-cv-medium tracking-cv-widest uppercase text-cv-muted">
             {content.title[0]}
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-cv-3xl">
-            {randomGiftProducts.map((product) => (
-              <RecommendationCard key={product.id} product={product} />
-            ))}
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-cv-3xl mt-3">
-            {randomCalligraphyProducts.map((product) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-cv-3xl">
+            {[...randomGiftProducts, ...randomCalligraphyProducts].map((product) => (
               <RecommendationCard key={product.id} product={product} />
             ))}
           </div>

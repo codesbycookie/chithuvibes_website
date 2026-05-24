@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 export default function Section1({content}) {
   return (
     <section
-      className="flex flex-col px-6 sm:px-10 md:px-20 w-full pt-10 sm:pt-12 md:pt-16 items-center min-h-screen box-border"
+      className="flex flex-col px-6 sm:px-10 md:px-30 w-full pt-10 sm:pt-12 md:pt-16 items-center min-h-screen box-border"
       style={{ backgroundColor: "#F0EEF5" }}
     >
       <div
@@ -27,7 +27,7 @@ export default function Section1({content}) {
 
           <h1
             className="m-0 mb-3 md:mb-4 leading-cv-tight tracking-cv-tight font-cv-serif font-cv-semibold text-cv-purple"
-            style={{ fontSize: "clamp(28px, 7vw, 90px)" }} // smaller on mobile
+            style={{ fontSize: "clamp(28px, 7vw, 90px)" }} 
           >
             {content.title[2]}<br />{content.title[3]}
           </h1>
