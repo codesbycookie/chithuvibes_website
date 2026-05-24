@@ -34,9 +34,7 @@ export default function AppRoutes({ isComingSoon }) {
     if (isComingSoon) {
         return (
             <Routes>
-                <Route element={<MainLayout />}>
-                    <Route path="*" element={<ComingSoon />} />
-                </Route>
+                <Route path="*" element={<ComingSoon />} />
             </Routes>
         );
     }
