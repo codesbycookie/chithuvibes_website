@@ -15,12 +15,7 @@ export default function Section1({ content }) {
 
           <p
             className="mb-4 md:mb-cv-xl text-sm sm:text-base md:text-xl uppercase text-cv-label tracking-cv-wider font-cv-sans text-cv-purple"
-            style={{
-              textDecoration: "underline",
-              textDecorationStyle: "wavy",
-              textDecorationColor: "var(--color-cv-purple)",
-              textUnderlineOffset: "5px",
-            }}
+            
           >
             {content.title[0]} &amp; {content.title[1]}
           </p>
