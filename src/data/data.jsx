@@ -200,7 +200,7 @@ export const ABOUT = {
 export const CALLIGRAPHY_PRODUCTS = {
     section1: {
         title: ["Premium Boutique", "The Collection", "Artistry", "in Every Stroke,", "Precision in", "Every Laser"],
-        backgroundImage: "/images/bg-imagejpeg",
+        backgroundImage: "/images/bg-image.jpeg",
         backgroundAlt: "Calligraphy products collection background",
     },
 
@@ -270,7 +270,7 @@ export const CALLIGRAPHY_PRODUCTS = {
 export const GIFT_PRODUCTS = {
     section1: {
         title: ["Premium Boutique", "The Collection", "Artistry", "in Every Stroke,", "Precision in", "Every Laser"],
-        backgroundImage: "/images/bg-imagejpeg",
+        backgroundImage: "/images/bg-image.jpeg",
         backgroundAlt: "Gift products collection background",
 
     },
