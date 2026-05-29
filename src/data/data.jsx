@@ -108,7 +108,7 @@ export const ABOUT = {
     section1: {
         label: "A Master's Legacy",
         title: ["The Soul of Tamil", "Calligraphy", "The Precision of the Laser"],
-        description: "Where Ancient Scripts meet modern radiance, Chithu Vibes is the convergence of scholarly heritage and laser engineering",
+        description: "Where Ancient Scripts meet modern radiance, Chithu Vibes is the convergence of Tamil heritage and laser craftsmanship",
     },
     section2: {
         title: "Our Origin Story",
