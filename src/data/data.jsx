@@ -3,7 +3,7 @@ import { buildCloudinaryUrl } from "../utils/cloudinary.util";
 export const HOME = {
     section1: {
         title: ["Heritage", "Technology", "The Soul of", "Tamil Calligraphy", "உயிர் மெய்யாய்", "வாழும் தமிழ்!"],
-        description: "Where ancient script meets avant-garde technology. We immortalize the fluid beauty of Tamil letters into timeless materials with microscopic accuracy",
+        description: "Personalized Gifts, Custom Name Boards, Laser-Crafted Decor and Timeless Tamil Calligraphy Creations that Transform Names, Words, and Memories into Lasting Keepsakes for Generations to Come",
         cta: "Explore Collection",
         image: buildCloudinaryUrl("v1779973806/WhatsApp_Image_2026-05-27_at_3.39.20_PM_1_zwae5u.jpg"),
         imgAlt: "Hero image showcasing the fusion of traditional Tamil calligraphy and modern laser engraving technology, representing the essence of Chithu Vibes' craftsmanship",
@@ -11,7 +11,7 @@ export const HOME = {
     },
 
     section2: {
-        title: ["The Masterpieces", "Curated Selection"],
+        title: ["Signature Collections", "Curated Selection"],
         cardData: [
             { title: "Wooden Engravings", desc: "Sustainable teak and walnut infused with classical Tamil literature", price: "From ₹600", href: "/gift-products", img: buildCloudinaryUrl("v1779800731/products/wooden_photo_frame/img2.jpg"), alt: "Teak wood laser-engraved with classical Tamil literature by Chithu Vibes" },
             { title: "Acrylic Masterpieces", desc: "Modern luminosity meeting traditional script for contemporary spaces", price: "From ₹1,000", href: "/calligraphy-products", img: buildCloudinaryUrl("v1779800503/products/acrylic_name_plaque/img4.jpg"), alt: "Acrylic name plaque with Tamil script for contemporary spaces by Chithu Vibes" },
@@ -29,8 +29,8 @@ export const HOME = {
     },
 
     section4: {
-        title: ["Trending Products", "Our most-loved pieces, picked by the community"],
-        description: "Our most-loved pieces, picked by the community",
+        title: ["Trending Products", "Personalized Gifts • Corporate Gifts • Custom Name Boards • Tamil Calligraphy Art"],
+        description: "Personalized Gifts • Corporate Gifts • Custom Name Boards • Tamil Calligraphy Art",
         pageLabel: "Page {index} of {total}",
         stats: [
             { value: "100%", label: "Original Script" },
@@ -53,7 +53,7 @@ export const HOME = {
 
     section7: {
         title: "Begin Your Bespoke Journey",
-        description: "Custom requests, bulk orders, or personal engravings. We are just a message away",
+        description: "Custom Creations, Corporate Gifting, and Personalized Engravings — Crafted to tell your Story. We are just a message away",
         cta: "Order via WhatsApp",
         whatsappMessage: "Hello Chithu Vibes! I am interested in placing a custom order"
     },
@@ -115,9 +115,10 @@ export const ABOUT = {
         image: buildCloudinaryUrl("v1779973806/WhatsApp_Image_2026-05-28_at_3.16.07_PM_u5swpa.jpg"),
         imageAlt: "Founder of Chithu Vibes holding a calligraphy piece in the studio",
         description: [
-            "Born in the heart of Tamil Nadu, Chithu Vibes emerged from a singular vision to give the ephemeral beauty of handwriting an everlasting permanence",
-            "We believe that emotions are the most precious cargo of human communication. When you choose a word, a name, or a verse, you are sharing a piece of your soul",
-            "We create artifacts that don't just decorate spaces—they anchor memories",
+            
+        "Born in the heart of Tamil Nadu, Chithu Vibes was founded with a simple vision — To preserve the beauty of Tamil handwriting and transform it into timeless creations that can be treasured for generations", 
+         " When you choose a name, a word, or a verse, you are sharing a piece of your story. Through the precision of laser craftsmanship, we transform those meaningful expressions into lasting keepsakes"
+        
         ],
         quote: "Etching Your Emotions into Eternity",
     },
