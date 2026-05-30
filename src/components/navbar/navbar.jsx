@@ -86,6 +86,7 @@ export default function Navbar() {
                   {totalItems > 9 ? NAVBAR.cartMax : totalItems}
                 </span>
               )}
+Cart
             </button>
 
             <button
